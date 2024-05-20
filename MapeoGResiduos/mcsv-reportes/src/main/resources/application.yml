@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: mcsv-reportes
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+
+
+
+

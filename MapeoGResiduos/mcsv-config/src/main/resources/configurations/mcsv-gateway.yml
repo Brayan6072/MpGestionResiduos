@@ -1,0 +1,24 @@
+eureka:
+  client:
+    register-with-eureka: false
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mcsv-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: reportes
+          uri: http://localhost:8099
+          predicates:
+            - Path=/index
+        - id: login
+          url: http://localhost:8090
+
+
