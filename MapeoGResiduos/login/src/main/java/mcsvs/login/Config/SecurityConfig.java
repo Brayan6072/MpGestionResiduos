@@ -30,10 +30,11 @@ public class SecurityConfig {
                         .disable())
             .authorizeHttpRequests(authRequest ->
                authRequest
-
+                       .requestMatchers(HttpMethod.POST).permitAll()
                        .requestMatchers(HttpMethod.GET).permitAll()
                        .requestMatchers(HttpMethod.OPTIONS).permitAll()
-                   .requestMatchers("/auth/**").permitAll()
+                   .requestMatchers("/auth/**", "/", "/index", "/auth/register",
+                           "/api/v1/search-registro/css/mapa.css").permitAll()
                    .anyRequest().authenticated()
 
                     )

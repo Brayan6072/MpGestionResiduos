@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Reportes</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Reportes</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>Estatus</th>
+            <th>Etiqueta U</th>
+            <th>Clasificación</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ReportesDTO : ${reportesList}">
+            <td th:text="${ReportesDTO.fecha}"></td>
+            <td th:text="${ReportesDTO.hora}"></td>
+            <td th:text="${ReportesDTO.estado}"></td>
+            <td th:text="${ReportesDTO.estatus}"></td>
+            <td th:text="${ReportesDTO.etiquetau}"></td>
+            <td th:text="${ReportesDTO.clasificacion}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<a href="/api/v1/search-registro/{estatus}">Siguiente</a>
+</body>
+</html>

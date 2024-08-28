@@ -21,7 +21,7 @@
 
 
     <modules>
-        <module>mcsv-loginsc</module>
+
         <module>login</module>
         <module>miniJuego</module>
         <module>mcsv-gateway</module>
