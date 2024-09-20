@@ -14,4 +14,5 @@ public interface ReporteService {
     List<UsernameDTO> getAllUsernames();
     public Reportes getId(Long id);
     public Reportes updateEstatus(Reportes reportes);
+    List<Reportes> findByClasificacionAndEstadoAndEstatusAndEtiquetau(String clasificacion, String estado, String estatus, String etiquetau);
 }

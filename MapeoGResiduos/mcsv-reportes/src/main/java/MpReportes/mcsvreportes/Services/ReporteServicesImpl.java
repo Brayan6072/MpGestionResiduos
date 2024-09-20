@@ -75,5 +75,10 @@ public class ReporteServicesImpl implements ReporteService{
         return reporteRepository.save(reportes);
     }
 
+    @Override
+    public List<Reportes> findByClasificacionAndEstadoAndEstatusAndEtiquetau(String clasificacion, String estado, String estatus, String etiquetau) {
+        return reporteRepository.findByClasificacionAndEstadoAndEstatusAndEtiquetau(clasificacion, estado, estatus, etiquetau);
+    }
+
 
 }

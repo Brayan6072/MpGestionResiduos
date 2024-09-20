@@ -32,7 +32,17 @@ public class ReportesController {
 
     @PostMapping("/crear")
     public String guardarReporte(@ModelAttribute("reportes") Reportes reportes) {
-        reporteService.guardarReporte(reportes);
+
+        List<Reportes> reportexist = reporteService.findByClasificacionAndEstadoAndEstatusAndEtiquetau(reportes.getClasificacion(),reportes.getEstado(), reportes.getEstatus(), reportes.getEtiquetau());
+
+        if( reportexist.isEmpty()){
+            reporteService.guardarReporte(reportes);
+            System.out.println("No repetido");
+        }else{
+            System.out.println("Repetido");
+
+        }
+
         return "redirect:/index";
     }
 
@@ -60,4 +70,6 @@ public class ReportesController {
         reportesExist.setEstatus("Verde");
         return ResponseEntity.ok(reporteService.updateEstatus(reportesExist));
     }
+
+
 }

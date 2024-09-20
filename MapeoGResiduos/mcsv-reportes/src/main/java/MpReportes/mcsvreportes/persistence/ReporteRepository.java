@@ -15,5 +15,5 @@ public interface ReporteRepository extends JpaRepository<Reportes, Long> {
 //    List<Reportes> findAllReportes(Long idReportes);
 
     List<Reportes> findByEstatus(String estatus);
-
+    List<Reportes> findByClasificacionAndEstadoAndEstatusAndEtiquetau(String clasificacion, String estado, String estatus, String etiquetau);
 }

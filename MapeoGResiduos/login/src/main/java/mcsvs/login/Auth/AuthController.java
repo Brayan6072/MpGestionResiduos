@@ -46,9 +46,12 @@ public class AuthController {
 //    }
 
     @PostMapping(value = "/register")
-    public String register(RegisterRequest request){
+    public String register(RegisterRequest request, Model model, String estatus){
 
         authService.register(request);
+        estatus = "Rojo";
+        List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
+        model.addAttribute("reportesList", reportesList);
         return "historial";
     }
 
