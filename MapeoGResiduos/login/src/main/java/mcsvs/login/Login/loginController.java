@@ -26,6 +26,7 @@ public class loginController {
         estatus = "Rojo";
         List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
         model.addAttribute("reportesList", reportesList);
+
         return "historial";
     }
     @GetMapping("/search-registro/{estatus}")

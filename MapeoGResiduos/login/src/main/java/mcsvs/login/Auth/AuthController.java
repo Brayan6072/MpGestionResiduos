@@ -32,12 +32,21 @@ public class AuthController {
 //        return ResponseEntity.ok(authService.login(request));
 //    }
     @PostMapping(value = "/login")
-    public String login(LoginRequest request, Model model, String estatus){
-       authService.login(request);
-        estatus = "Rojo";
-        List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
-        model.addAttribute("reportesList", reportesList);
-        return "historial";
+    public String login(LoginRequest request, Model model, Model token, String estatus){
+
+        AuthResponse activo = authService.login(request);
+
+        if(activo != null){
+            estatus = "Rojo";
+            token.addAttribute("useractivo", activo);
+            System.out.println(activo);
+            List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
+            model.addAttribute("reportesList", reportesList);
+            return "historial";
+        }else{
+            return "index";
+        }
+
     }
 
 //    @PostMapping(value = "/register")

@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 @Controller
-@CrossOrigin(origins = {"http://localhost:9090"})
+
 public class IndexController {
 
     @GetMapping("/index")
@@ -14,5 +14,15 @@ public class IndexController {
         User user = new User();
         model.addAttribute("user", user);
         return "index";
+    }
+
+    @GetMapping("/Signout")
+    public String signout (Model token){
+
+        token.addAttribute("useractivo", null);
+
+        return "index";
+
+
     }
 }
