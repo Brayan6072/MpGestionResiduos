@@ -1,0 +1,35 @@
+services:
+  config-server:
+    build: mcsv-config
+    ports:
+      - "8888:8888"
+
+    environment:
+      - SPRING_PROFILES_ACTIVE=native
+      - SPRING_APPLICATION_NAME=config-server
+      - SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS=classpath:/configurations  
+    networks:
+      - eureka-network
+
+  mcsv-eureka:
+    build: mcsv-eureka
+    ports:
+      - "8761:8761"       
+
+    environment:
+      - SPRING_PROFILES_ACTIVE=native
+      - SPRING_APPLICATION_NAME=mcsv-eureka
+      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=false
+      - EUREKA_CLIENT_FETCH_REGISTRY=false
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - config-server
+        
+
+
+
+networks:
+  eureka-network:
+    driver: bridge
+
+

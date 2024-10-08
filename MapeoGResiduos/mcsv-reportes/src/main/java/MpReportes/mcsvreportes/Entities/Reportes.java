@@ -36,13 +36,17 @@ public class Reportes {
     private String estado;
 
     @Column(name = "estatus")
-    private String estatus;
+    private String estatus = "Rojo";
 
     @Column(name = "etiquetau")
     private String etiquetau;
 
     @Column(name = "clasificacion")
     private String clasificacion;
+
+    public String getEstatus() {
+        return estatus;
+    }
 
     public String getEtiquetau() {
         return etiquetau;

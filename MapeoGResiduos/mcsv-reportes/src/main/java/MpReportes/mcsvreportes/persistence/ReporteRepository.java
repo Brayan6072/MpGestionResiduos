@@ -14,5 +14,6 @@ public interface ReporteRepository extends JpaRepository<Reportes, Long> {
 //    @Query("SELECT s FROM Reportes s WHERE s.reporteId = :idReportes")
 //    List<Reportes> findAllReportes(Long idReportes);
 
-
+    List<Reportes> findByEstatus(String estatus);
+    List<Reportes> findByClasificacionAndEstadoAndEstatusAndEtiquetau(String clasificacion, String estado, String estatus, String etiquetau);
 }

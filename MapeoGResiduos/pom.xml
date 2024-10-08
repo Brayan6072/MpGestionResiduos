@@ -21,15 +21,12 @@
 
 
     <modules>
-        <module>mcsv-loginsc</module>
-        <module>login</module>
-        <module>miniJuego</module>
-        <module>mcsv-gateway</module>
         <module>mcsv-config</module>
         <module>mcsv-eureka</module>
+        <module>mcsv-gateway</module>
         <module>mcsv-reportes</module>
-
-
+        <module>login</module>
+        <module>miniJuego</module>
     </modules>
 
     <properties>
@@ -41,7 +38,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
+            <version>1.18.34</version>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>

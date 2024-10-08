@@ -1,5 +1,6 @@
-FROM openjdk:22 as base
-EXPOSE 8080
-ADD target/Microservicio_MiniJuego.jar Microservicio_MiniJuego.jar
-ENTRYPOINT ["java", "-jar", "/Microservicio_MiniJuego.jar"]
+FROM openjdk:22-jdk-slim
+ARG JAR_FILE=target/Microsevicio_MiniJuego.jar
+COPY ${JAR_FILE} mcsv-minijuego.jar
+EXPOSE 9990
+ENTRYPOINT ["java", "-jar", "mcsv-minijuego.jar"]
 

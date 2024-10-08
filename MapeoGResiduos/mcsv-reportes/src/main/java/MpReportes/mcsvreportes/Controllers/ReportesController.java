@@ -1,5 +1,7 @@
 package MpReportes.mcsvreportes.Controllers;
 
+import MpReportes.mcsvreportes.Client.ReportesClient;
+import MpReportes.mcsvreportes.DTO.UsernameDTO;
 import MpReportes.mcsvreportes.Entities.Reportes;
 import MpReportes.mcsvreportes.Services.ReporteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 
@@ -15,13 +20,8 @@ public class ReportesController {
 
     @Autowired
     private ReporteService reporteService;
-
-//    @GetMapping("/api/reportes/all")
-//    public String BuscarReportes( Model model){
-//        model.addAttribute("reportes", reporteService.BuscaReportes());
-//        return "index";
-//    }
-
+    @Autowired
+    private ReportesClient reportesClient;
 
     @GetMapping("/index")
     public String Index(Model model) {
@@ -32,8 +32,44 @@ public class ReportesController {
 
     @PostMapping("/crear")
     public String guardarReporte(@ModelAttribute("reportes") Reportes reportes) {
-        reporteService.guardarReporte(reportes);
+
+        List<Reportes> reportexist = reporteService.findByClasificacionAndEstadoAndEstatusAndEtiquetau(reportes.getClasificacion(),reportes.getEstado(), reportes.getEstatus(), reportes.getEtiquetau());
+
+        if(reportexist.isEmpty()){
+            reporteService.guardarReporte(reportes);
+            System.out.println(reportes);
+            System.out.println("No repetido");
+        }else{
+            System.out.println("Repetido");
+
+        }
+
         return "redirect:/index";
+    }
+
+    @GetMapping("/search-estatus/{estatus}")
+    public ResponseEntity<?> findByEstatus(@PathVariable String estatus){
+        return ResponseEntity.ok(reporteService.findAllReportes(estatus));
+    }
+
+
+    @GetMapping("/search-all-email")
+    public ResponseEntity<?> getAllUsernames(){
+        return ResponseEntity.ok(reportesClient.findAll());
+    }
+
+    @GetMapping("/getid/{id}")
+    public  ResponseEntity<?> getId(@PathVariable Long id){
+        return ResponseEntity.ok(reporteService.getId(id));
+    }
+
+
+    @GetMapping("/update/{id}")
+    public ResponseEntity<?> UpdateEstatus(@PathVariable Long id){
+
+        Reportes reportesExist = reporteService.getId(id);
+        reportesExist.setEstatus("Verde");
+        return ResponseEntity.ok(reporteService.updateEstatus(reportesExist));
     }
 
 

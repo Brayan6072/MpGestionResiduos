@@ -1,0 +1,12 @@
+server:
+  port: 9990
+
+spring:
+  application:
+    name: mcsv-minijuego
+  thymeleaf:
+    cache: false
+    enabled: true
+    servlet:
+      prefix: /templates/
+      suffix: .html

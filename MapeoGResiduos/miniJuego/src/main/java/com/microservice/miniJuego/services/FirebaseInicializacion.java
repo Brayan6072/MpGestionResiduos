@@ -17,15 +17,15 @@ public class FirebaseInicializacion {
         FileInputStream serviceAccount =
                     null;
          try {         
-            serviceAccount = new FileInputStream("C:\\Users\\ben10\\OneDrive\\Escritorio\\MapeoGResiduos\\miniJuego\\serviceAccountKey.json");
+            serviceAccount = new FileInputStream("C:\\Users\\ben10\\OneDrive\\Escritorio\\MpGestionResiduos\\MapeoGResiduos\\miniJuego\\serviceAccountKey.json");
 
         @SuppressWarnings("deprecation")
-            FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .build();
+        FirebaseOptions options = new FirebaseOptions.Builder()
+                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                .build();
+        
 
-
-            FirebaseApp.initializeApp(options);
+        FirebaseApp.initializeApp(options);
             } catch (IOException e) {
                  e.printStackTrace();
          }
