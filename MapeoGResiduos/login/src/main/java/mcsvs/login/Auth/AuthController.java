@@ -19,40 +19,11 @@ import java.util.List;
 @Controller
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
     private final AuthService authService;
     private final UserRepository userRepository;
     @Autowired
     private ReportesClient reportesClient;
-
-//    @PostMapping(value = "/login")
-//    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
-//
-//        return ResponseEntity.ok(authService.login(request));
-//    }
-    @PostMapping(value = "/login")
-    public String login(LoginRequest request, Model model, Model token, String estatus){
-
-        AuthResponse activo = authService.login(request);
-
-        if(activo != null){
-            estatus = "Rojo";
-            token.addAttribute("useractivo", activo);
-            System.out.println(activo);
-            List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
-            model.addAttribute("reportesList", reportesList);
-            return "historial";
-        }else{
-            return "index";
-        }
-
-    }
-
-//    @PostMapping(value = "/register")
-//    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
-//        return ResponseEntity.ok(authService.register(request));
-//    }
 
     @PostMapping(value = "/register")
     public String register(RegisterRequest request, Model model, String estatus){
@@ -79,3 +50,13 @@ public class AuthController {
 //        "name": "hola",
 //        "phone":"123456789"
 //        }
+
+//    @PostMapping(value = "/login")
+//    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+//
+//        return ResponseEntity.ok(authService.login(request));
+//    }
+//    @PostMapping(value = "/register")
+//    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+//        return ResponseEntity.ok(authService.register(request));
+//    }

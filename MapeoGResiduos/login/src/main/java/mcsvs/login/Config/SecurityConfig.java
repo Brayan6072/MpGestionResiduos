@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -25,19 +27,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-            .csrf(csrf ->
-                csrf
-                        .disable())
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authRequest ->
                authRequest
-                       .requestMatchers(HttpMethod.POST).permitAll()
+
                        .requestMatchers(HttpMethod.GET).permitAll()
                        .requestMatchers(HttpMethod.OPTIONS).permitAll()
-                   .requestMatchers("/auth/**", "/", "/index", "/auth/register",
-                           "/api/v1/search-registro/css/mapa.css").permitAll()
+                       .requestMatchers("/auth/**", "/api/v1/**", "/index", "/api/v1/css/**", "/css/**").permitAll()
                    .anyRequest().authenticated()
 
                     )
+
             .sessionManagement(sessionManager->
                     sessionManager
                             .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -46,4 +46,6 @@ public class SecurityConfig {
 
             .build();
     }
+
+
 }

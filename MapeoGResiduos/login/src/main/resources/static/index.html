@@ -27,7 +27,7 @@
 
 
     <div class="form-container sign-in">
-        <form id="loginForm" method="post" th:action="@{/auth/login}">
+        <form id="loginForm" method="post" th:action="@{/api/v1/login}">
             <h1>Iniciar Sesion</h1>
             <input name="username" type="email" placeholder="username" required>
             <input name="password" type="password" placeholder="password" required>
@@ -51,7 +51,7 @@
         </div>
     </div>
 
- 
+
 </div>
 <a class="home-link" href="http://localhost:8099/index"><img src="icon/home.png" alt=""></a>
 <script src="js/scriptlg.js"></script>

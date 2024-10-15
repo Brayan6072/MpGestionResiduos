@@ -21,6 +21,9 @@ spring:
     servlet:
       prefix: /templates/
       suffix: .html
+    mode: HTML5
+    dialect: org.thymeleaf.spring5.dialect.SpringStandardDialect
+
 
 
 eureka:
