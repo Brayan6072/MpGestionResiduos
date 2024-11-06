@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -71,6 +72,14 @@ public class ReportesController {
         reportesExist.setEstatus("Verde");
         return ResponseEntity.ok(reporteService.updateEstatus(reportesExist));
     }
+    @GetMapping("/CountLastWeek")
+    public  ResponseEntity<?> CountLastWeek(){
 
+        return ResponseEntity.ok(reporteService.countReportesInLastWeek());
+    }
+    @GetMapping("/CountLastMonth")
+    public ResponseEntity<?> CountLastMonth(){
+        return ResponseEntity.ok(reporteService.countReportesInLastMonth());
+    }
 
 }

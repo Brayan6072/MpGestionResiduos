@@ -91,5 +91,15 @@ public class ReporteServicesImpl implements ReporteService{
         return reporteRepository.findByClasificacionAndEstadoAndEstatusAndEtiquetau(clasificacion, estado, estatus, etiquetau);
     }
 
+    @Override
+    public List<Object[]> countReportesInLastWeek() {
+        return reporteRepository.countReportesInLastWeek();
+    }
+
+    @Override
+    public List<Object[]> countReportesInLastMonth() {
+        return reporteRepository.countReportesInLastMonth();
+    }
+
 
 }

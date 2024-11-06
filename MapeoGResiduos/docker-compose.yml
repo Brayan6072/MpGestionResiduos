@@ -21,13 +21,29 @@ services:
       - "8099:8099"  
     environment:
       - CONFIG_SERVER_URL=http://config-server:8888  
-      - EUREKA_CLIENT_SERVICE_URL=http://eureka-server:8761/eureka
+      - EUREKA_CLIENT_SERVICE_URL=http://mcsv-eureka:8761/eureka
+      - DB_URL = jdbc:mysql://reportes.cr4bj8rv1tz1.us-east-1.rds.amazonaws.com:3306/notificaciones
+      - DB_USERNAME = admin
+      - DB_PASSWORD = admin123
     networks:
       - eureka-network
     depends_on:
       - config-server
       - mcsv-eureka
+
+  mcsv-minijuego:
+    build: miniJuego
+    ports:
+      - "9990:9990"  
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8888  
+      - EUREKA_CLIENT_SERVICE_URL=http://mcsv-eureka:8761/eureka
       
+    networks:
+      - eureka-network
+    depends_on:
+      - config-server
+      - mcsv-eureka    
 
 networks:
   eureka-network:

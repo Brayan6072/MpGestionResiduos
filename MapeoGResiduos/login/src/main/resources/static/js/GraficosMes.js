@@ -32,7 +32,7 @@ cursor.lineY.set("visible", false);
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var xRenderer = am5xy.AxisRendererX.new(root, {
+var xRenderer = am5xy.AxisRendererX.new(root, { 
   minGridDistance: 30,
   minorGridEnabled: true
  });
@@ -91,7 +91,7 @@ var data = [
     name: "Organicos",
     value: 34,
     bulletSettings: { src: "img/organicos.png" }
-
+    
   },
   {
     name: "Unicel",
@@ -122,7 +122,7 @@ var data = [
     name: "Dificil Reciclaje",
     value: 65,
     bulletSettings: { src: "img/dificil_reciclaje.png" }
-  }
+  }  
 ];
 
 series.bullets.push(function() {

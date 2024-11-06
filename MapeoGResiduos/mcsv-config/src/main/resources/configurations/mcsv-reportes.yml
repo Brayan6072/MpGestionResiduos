@@ -6,9 +6,10 @@ spring:
     name: mcsv-reportes
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://reportes.cr4bj8rv1tz1.us-east-1.rds.amazonaws.com:3306/notificaciones
-    username: admin
-    password: admin123
+    url: ${DB_URL:jdbc:mysql://localhost:3306/notificaciones}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+
   jpa:
     hibernate:
       ddl-auto: update

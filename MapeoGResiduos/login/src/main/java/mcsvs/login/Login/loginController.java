@@ -7,11 +7,13 @@ import mcsvs.login.Auth.LoginRequest;
 import mcsvs.login.Client.ReportesClient;
 import mcsvs.login.DTO.ReportesDTO;
 import mcsvs.login.User.UserRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,6 +35,7 @@ public class loginController {
             System.out.println(activo);
             List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
             model.addAttribute("reportesList", reportesList);
+
             return "Historial";
         }else{
             return "index";
@@ -72,8 +75,39 @@ public class loginController {
         ReportesDTO reportesDTO = reportesClient.updateEstatus(id);
         List<ReportesDTO> reportesList = reportesClient.findByEstatus("Rojo");
         model.addAttribute("reportesList", reportesList);
+
         return "historial";
     }
 
+    @GetMapping("/CountLastWeek")
+    public List<Object[]> CountLastWeek(Model model){
+        List<Object[]> reportlastweek = reportesClient.CountLastWeek();
+        model.addAttribute("reportlastweek", reportlastweek);
+        return reportlastweek;
+    }
+
+    @GetMapping("/CountLastMonth")
+    public String CountLastMonth(Model model){
+        List<Object[]> reportlastmonth = reportesClient.CountLastMonth();
+        model.addAttribute("reportlastmonth", reportlastmonth);
+        return "piechart";
+    }
+    @GetMapping("/reportes")
+    public String mostrarGrafico(Model model) {
+
+        List<Object[]> resultados = reportesClient.CountLastMonth();
+
+        List<Map<String, Object>> reportes = new ArrayList<>();
+        for (Object[] resultado : resultados) {
+            Map<String, Object> reporte = new HashMap<>();
+            reporte.put("clasificacion", resultado[0]);
+            reporte.put("numero_reportes", resultado[1]);
+            reportes.add(reporte);
+        }
+
+        // Agrega los reportes al modelo
+        model.addAttribute("reportes", reportes);
+        return "grafico";  // Nombre de la plantilla Thymeleaf que se va a renderizar
+    }
 
 }

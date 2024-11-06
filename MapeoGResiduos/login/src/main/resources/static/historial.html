@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Mapeo gestion de Residuos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/themify-icons.css">
@@ -26,6 +26,12 @@
     <link rel="stylesheet" href="/assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <!--Amcharts grapfics-->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Dataviz.js"></script>
 </head>
 
 <body>
@@ -123,15 +129,40 @@
                     <div class="breadcrumbs-area clearfix">
                         <h4 class="page-title pull-left">Dashboard</h4>
                         <ul class="breadcrumbs pull-left">
-                            <li><a href="/Signout">Inicio</a></li>
-                            <li><span>Reportes</span></li>
+                            <li><a href="#">Home</a></li>
+                            <li><span>Historial</span></li>
                         </ul>
                     </div>
                 </div>
-
+                <div class="col-sm-6 clearfix">
+                    <div class="user-profile pull-right">
+                        <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Usuario <i class="fa fa-angle-down"></i></h4>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" href="/Signout">Log Out</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
+        <div class="main-content-inner">
+               
+            <div class="row">
+                <div class="col-lg-6 mt-5">
+                    <div class="card">
+                        <div id="highpiechart4"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5">
+                    <div class="card">
+                        <div id="highpiechart5"></div>
+                    </div>
+                </div>
+                
+            </div>
+           
+        </div>
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
@@ -180,7 +211,8 @@
 
 </div>
 
-
+<script src="/js/GraficosHistorial.js"></script>
+<script src="/js/GraficosMes.js"></script>
 <script src="/assets/js/vendor/jquery-2.2.4.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/assets/js/popper.min.js"></script>
