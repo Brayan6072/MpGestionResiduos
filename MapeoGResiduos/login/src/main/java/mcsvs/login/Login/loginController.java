@@ -22,10 +22,37 @@ public class loginController {
     private final ReportesClient reportesClient;
     private final AuthService authService;
     private final UserRepository userRepository;
+//Reportes del ultimo mes
+    private List<Map<String, Object>> obtenerReportesMensuales() {
+        List<Object[]> resultados = reportesClient.CountLastMonth();
+        List<Map<String, Object>> reportesmonth = new ArrayList<>();
 
+        for (Object[] resultado : resultados) {
+            Map<String, Object> reporte = new HashMap<>();
+            reporte.put("clasificacion", resultado[0]);
+            reporte.put("numero_reportes", resultado[1]);
+            reportesmonth.add(reporte);
+        }
+
+        return reportesmonth;
+    }
+    //Reportes de la ultima semana
+    private List<Map<String, Object>> obtenerReportesSemanal() {
+        List<Object[]> resultados = reportesClient.CountLastWeek();
+        List<Map<String, Object>> reportesweek = new ArrayList<>();
+
+        for (Object[] resultado : resultados) {
+            Map<String, Object> reporte = new HashMap<>();
+            reporte.put("clasificacion", resultado[0]);
+            reporte.put("numero_reportes", resultado[1]);
+            reportesweek.add(reporte);
+        }
+
+        return reportesweek;
+    }
 
     @PostMapping(value = "/login")
-    public String login(LoginRequest request, Model model, Model token, String estatus){
+    public String login(LoginRequest request, Model model, Model token, String estatus, Model modelm, Model models){
 
         AuthResponse activo = authService.login(request);
 
@@ -36,6 +63,12 @@ public class loginController {
             List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
             model.addAttribute("reportesList", reportesList);
 
+            List<Map<String, Object>> reportesmonth = obtenerReportesMensuales();
+            modelm.addAttribute("reportesmes", reportesmonth);
+
+            List<Map<String, Object>> reportesweek = obtenerReportesSemanal();
+            models.addAttribute("reportessemanal", reportesweek);
+
             return "Historial";
         }else{
             return "index";
@@ -43,23 +76,18 @@ public class loginController {
 
     }
 
-    @GetMapping(value = "/dashboard")
-    public String welcome(String estatus, Model model)
-    {
-        estatus = "Rojo";
-        List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
-        model.addAttribute("reportesList", reportesList);
-
-        return "historial";
-    }
-
-
 
     @GetMapping("/search-estatus/{estatus}")
-    public String getReportesByEstatus(@PathVariable String estatus, Model model) {
+    public String getReportesByEstatus(@PathVariable String estatus, Model model, Model modelm, Model models) {
         estatus = "Rojo";
         List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
         model.addAttribute("reportesList", reportesList);
+
+        List<Map<String, Object>> reportesmonth = obtenerReportesMensuales();
+        modelm.addAttribute("reportesmes", reportesmonth);
+
+        List<Map<String, Object>> reportesweek = obtenerReportesSemanal();
+        models.addAttribute("reportessemanal", reportesweek);
 
         return "historial";
     }
@@ -71,10 +99,16 @@ public class loginController {
         return "Registro";
     }
     @GetMapping("/update/{id}")
-    public String UpdateEstatus(@PathVariable Long id, Model model){
+    public String UpdateEstatus(@PathVariable Long id, Model model, Model modelm, Model models){
         ReportesDTO reportesDTO = reportesClient.updateEstatus(id);
         List<ReportesDTO> reportesList = reportesClient.findByEstatus("Rojo");
         model.addAttribute("reportesList", reportesList);
+
+        List<Map<String, Object>> reportesmonth = obtenerReportesMensuales();
+        modelm.addAttribute("reportesmes", reportesmonth);
+
+        List<Map<String, Object>> reportesweek = obtenerReportesSemanal();
+        models.addAttribute("reportessemanal", reportesweek);
 
         return "historial";
     }
@@ -86,12 +120,6 @@ public class loginController {
         return reportlastweek;
     }
 
-    @GetMapping("/CountLastMonth")
-    public String CountLastMonth(Model model){
-        List<Object[]> reportlastmonth = reportesClient.CountLastMonth();
-        model.addAttribute("reportlastmonth", reportlastmonth);
-        return "piechart";
-    }
     @GetMapping("/reportes")
     public String mostrarGrafico(Model model) {
 
@@ -105,9 +133,9 @@ public class loginController {
             reportes.add(reporte);
         }
 
-        // Agrega los reportes al modelo
+
         model.addAttribute("reportes", reportes);
-        return "grafico";  // Nombre de la plantilla Thymeleaf que se va a renderizar
+        return "grafico";
     }
 
 }

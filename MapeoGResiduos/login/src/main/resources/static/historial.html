@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/assets/css/slicknav.min.css">
     <!-- amcharts css -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- Start datatable css -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
@@ -139,7 +141,7 @@
                         <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
                         <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Usuario <i class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
-                            
+
                             <a class="dropdown-item" href="/Signout">Log Out</a>
                         </div>
                     </div>
@@ -147,7 +149,7 @@
             </div>
         </div>
         <div class="main-content-inner">
-               
+
             <div class="row">
                 <div class="col-lg-6 mt-5">
                     <div class="card">
@@ -159,9 +161,9 @@
                         <div id="highpiechart5"></div>
                     </div>
                 </div>
-                
+
             </div>
-           
+
         </div>
         <div class="col-12 mt-5">
             <div class="card">
@@ -210,9 +212,12 @@
 </footer>
 
 </div>
-
-<script src="/js/GraficosHistorial.js"></script>
-<script src="/js/GraficosMes.js"></script>
+<script th:inline="javascript">
+    const reportesmes = /*[[${reportesmes}]]*/ [];
+    const reportessemanal = /*[[${reportessemanal}]]*/ [];
+</script>
+<script src="/assets/js/GraficosHistorial.js"></script>
+<script src="/assets/js/GraficosMes.js"></script>
 <script src="/assets/js/vendor/jquery-2.2.4.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/assets/js/popper.min.js"></script>

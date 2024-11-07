@@ -4,10 +4,7 @@ am5.ready(function() {
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("highpiechart4");
-document.getElementById("highpiechart4").style.paddingBottom = "15px";
-document.getElementById("highpiechart4").style.paddingLeft = "15px";
-document.getElementById("highpiechart5").style.paddingBottom = "15px";
-document.getElementById("highpiechart5").style.paddingLeft = "15px";
+
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
@@ -32,14 +29,14 @@ cursor.lineY.set("visible", false);
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var xRenderer = am5xy.AxisRendererX.new(root, { 
+var xRenderer = am5xy.AxisRendererX.new(root, {
   minGridDistance: 30,
   minorGridEnabled: true
  });
 
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   maxDeviation: 0,
-  categoryField: "name",
+  categoryField: "clasificacion",
   renderer: xRenderer,
   tooltip: am5.Tooltip.new(root, {})
 }));
@@ -64,9 +61,9 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   name: "Series 1",
   xAxis: xAxis,
   yAxis: yAxis,
-  valueYField: "value",
+  valueYField: "numero_reportes",
   sequencedInterpolation: true,
-  categoryXField: "name",
+  categoryXField: "clasificacion",
   tooltip: am5.Tooltip.new(root, { dy: -25, labelText: "{valueY}" })
 }));
 
@@ -85,45 +82,6 @@ series.columns.template.adapters.add("stroke", (stroke, target) => {
   return chart.get("colors").getIndex(series.columns.indexOf(target));
 });
 
-// Set data
-var data = [
-  {
-    name: "Organicos",
-    value: 34,
-    bulletSettings: { src: "img/organicos.png" }
-    
-  },
-  {
-    name: "Unicel",
-    value: 65,
-    bulletSettings: { src: "img/Unicel.png" }
-  },
-  {
-    name: "Vidrio",
-    value: 47,
-    bulletSettings: { src: "img/Vidrio.png" }
-  },
-  {
-    name: "Papel",
-    value: 54,
-    bulletSettings: { src: "img/Papel.png" }
-  },
-  {
-    name: "Metal",
-    value: 54,
-    bulletSettings: { src: "img/Metal.png" }
-  },
-  {
-    name: "Plasticos",
-    value: 34,
-    bulletSettings: { src: "img/Plasticos.png" }
-  },
-  {
-    name: "Dificil Reciclaje",
-    value: 65,
-    bulletSettings: { src: "img/dificil_reciclaje.png" }
-  }  
-];
 
 series.bullets.push(function() {
   return am5.Bullet.new(root, {
@@ -143,8 +101,8 @@ series.bullets.push(function() {
   });
 });
 
-xAxis.data.setAll(data);
-series.data.setAll(data);
+xAxis.data.setAll(reportesmes);
+series.data.setAll(reportesmes);
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
