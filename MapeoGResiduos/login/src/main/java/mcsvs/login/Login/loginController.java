@@ -68,7 +68,7 @@ public class loginController {
 
             List<Map<String, Object>> reportesweek = obtenerReportesSemanal();
             models.addAttribute("reportessemanal", reportesweek);
-            alert
+            
             return "Historial";
         }else{
             return "index";
