@@ -44,6 +44,10 @@ public class Reportes {
     @Column(name = "clasificacion")
     private String clasificacion;
 
+    public String getEstatus() {
+        return estatus;
+    }
+
     public String getEtiquetau() {
         return etiquetau;
     }

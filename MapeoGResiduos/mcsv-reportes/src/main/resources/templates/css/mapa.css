@@ -160,3 +160,11 @@ form{
         height: 600px;
     }
 }
+
+
+a#minijuegolink {
+    position: absolute;
+    z-index: 400;
+    right: 0px;
+    bottom: 0;
+}

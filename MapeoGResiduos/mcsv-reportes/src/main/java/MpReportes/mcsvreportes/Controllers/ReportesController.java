@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -35,8 +36,9 @@ public class ReportesController {
 
         List<Reportes> reportexist = reporteService.findByClasificacionAndEstadoAndEstatusAndEtiquetau(reportes.getClasificacion(),reportes.getEstado(), reportes.getEstatus(), reportes.getEtiquetau());
 
-        if( reportexist.isEmpty()){
+        if(reportexist.isEmpty()){
             reporteService.guardarReporte(reportes);
+            System.out.println(reportes);
             System.out.println("No repetido");
         }else{
             System.out.println("Repetido");
@@ -70,6 +72,14 @@ public class ReportesController {
         reportesExist.setEstatus("Verde");
         return ResponseEntity.ok(reporteService.updateEstatus(reportesExist));
     }
+    @GetMapping("/CountLastWeek")
+    public  ResponseEntity<?> CountLastWeek(){
 
+        return ResponseEntity.ok(reporteService.countReportesInLastWeek());
+    }
+    @GetMapping("/CountLastMonth")
+    public ResponseEntity<?> CountLastMonth(){
+        return ResponseEntity.ok(reporteService.countReportesInLastMonth());
+    }
 
 }

@@ -18,5 +18,4 @@ public class UsernameDTO {
 
     String username;
 
-
 }

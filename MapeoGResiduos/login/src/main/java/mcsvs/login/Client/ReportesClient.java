@@ -20,6 +20,10 @@ public interface ReportesClient {
     @GetMapping("/update/{id}")
     ReportesDTO updateEstatus(@PathVariable Long id);
 
+    @GetMapping("/CountLastWeek")
+    List<Object[]> CountLastWeek();
 
+    @GetMapping("/CountLastMonth")
+    List<Object[]> CountLastMonth();
 }
 

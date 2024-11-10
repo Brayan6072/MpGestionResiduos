@@ -227,3 +227,20 @@ body{
 .container.active .toggle-right{
     transform: translateX(200%);
 }
+
+a.home-link {
+    display: flex;
+    bottom: 20%;
+    position: absolute;
+    left: 50%;
+}
+
+a img {
+    z-index: 100;
+    position: relative;
+    height: 5%;
+    width: 7%;
+    justify-content: center;
+    display: flex;
+   
+}
