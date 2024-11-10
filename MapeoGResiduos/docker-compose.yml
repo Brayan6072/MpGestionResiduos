@@ -37,8 +37,7 @@ services:
       - "9990:9990"  
     environment:
       - CONFIG_SERVER_URL=http://config-server:8888  
-      - EUREKA_CLIENT_SERVICE_URL=http://mcsv-eureka:8761/eureka
-      
+      - EUREKA_CLIENT_SERVICE_URL=http://mcsv-eureka:8761/eureka  
     networks:
       - eureka-network
     depends_on:
