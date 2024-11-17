@@ -17,7 +17,7 @@ public class FirebaseInicializacion {
         FileInputStream serviceAccount =
                     null;
          try {         
-            serviceAccount = new FileInputStream("serviceAccountKey.json");
+            serviceAccount = new FileInputStream("C:\\Users\\ben10\\Desktop\\MpGestionResiduos\\MapeoGResiduos\\miniJuego\\src\\main\\java\\com\\microservice\\miniJuego\\services\\serviceAccountKey.json");
 
         @SuppressWarnings("deprecation")
         FirebaseOptions options = new FirebaseOptions.Builder()

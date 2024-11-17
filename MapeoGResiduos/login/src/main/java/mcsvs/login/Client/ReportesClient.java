@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "mcsv-reportes", url = "localhost:8099")
+@FeignClient(name = "mcsv-reportes", url = "${feign.client.mcsv-reportes.url}")
 
 public interface ReportesClient {
 
