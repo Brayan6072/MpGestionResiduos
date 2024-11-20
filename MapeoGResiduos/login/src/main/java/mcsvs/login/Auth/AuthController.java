@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/auth")
@@ -24,16 +25,6 @@ public class AuthController {
     private final UserRepository userRepository;
     @Autowired
     private ReportesClient reportesClient;
-
-    @PostMapping(value = "/register")
-    public String register(RegisterRequest request, Model model, String estatus){
-
-        authService.register(request);
-        estatus = "Rojo";
-        List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
-        model.addAttribute("reportesList", reportesList);
-        return "historial";
-    }
 
     @GetMapping("/search-all-username")
     public ResponseEntity<?> findAll(){

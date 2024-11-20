@@ -1,0 +1,66 @@
+services:
+  config-server:
+    build: mcsv-config
+    ports:
+      - "8888:8888"
+    networks:
+      - eureka-network
+
+  mcsv-eureka:
+    build: mcsv-eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - eureka-network
+    depends_on:
+      - config-server  
+
+  mcsv-reportes:
+    build: mcsv-reportes
+    ports:
+      - "8099:8099"  
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8888  
+      - EUREKA_CLIENT_SERVICE_URL=http://mcsv-eureka:8761/eureka
+      - DB_URL=jdbc:mysql://mysql-8ebd880-alumnos-859e.l.aivencloud.com:28982/notificaciones
+      - DB_USERNAME=1
+      - DB_PASSWORD=1
+      - FOREIGN_CLIENT_URL=http://microservice-login:9090/auth
+    networks:
+      - eureka-network
+    depends_on:
+      - config-server
+      - mcsv-eureka
+  microservice-login:
+    build: login
+    ports:
+      - "9090:9090"  
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8888  
+      - EUREKA_CLIENT_SERVICE_URL=http://mcsv-eureka:8761/eureka
+      - DB_URL=jdbc:mysql://mysql-8ebd880-alumnos-859e.l.aivencloud.com:28982/securitydb
+      - DB_USERNAME=1
+      - DB_PASSWORD=1
+      - FOREIGN_CLIENT_URL=http://mcsv-reportes:8099
+    networks:
+      - eureka-network
+    depends_on:
+      - config-server
+      - mcsv-eureka
+      - mcsv-reportes  
+  mcsv-minijuego:
+    build: miniJuego
+    ports:
+      - "9990:9990"  
+    environment:
+      - CONFIG_SERVER_URL=http://config-server:8888  
+      - EUREKA_CLIENT_SERVICE_URL=http://mcsv-eureka:8761/eureka  
+    networks:
+      - eureka-network
+    depends_on:
+      - config-server
+      - mcsv-eureka    
+
+networks:
+  eureka-network:
+    driver: bridge

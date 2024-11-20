@@ -3,6 +3,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -17,7 +19,7 @@ public class FirebaseInicializacion {
         FileInputStream serviceAccount =
                     null;
          try {         
-            serviceAccount = new FileInputStream("C:\\Users\\ben10\\Desktop\\MpGestionResiduos\\MapeoGResiduos\\miniJuego\\src\\main\\java\\com\\microservice\\miniJuego\\services\\serviceAccountKey.json");
+            serviceAccount = new FileInputStream("serviceAccountKey.json");
 
         @SuppressWarnings("deprecation")
         FirebaseOptions options = new FirebaseOptions.Builder()

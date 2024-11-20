@@ -16,7 +16,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
-
+@CrossOrigin(origins = "https://mapeo-gestion-de-residuos.web.app/")
+@RequestMapping("/reportes")
 public class ReportesController {
 
     @Autowired
@@ -45,8 +46,28 @@ public class ReportesController {
 
         }
 
-        return "redirect:/index";
+        return "index";
     }
+
+    @PostMapping("/reportar")
+    public ResponseEntity<String> Reportar(@RequestBody Reportes reportes) {
+
+        List<Reportes> reportexist = reporteService.findByClasificacionAndEstadoAndEstatusAndEtiquetau(
+                reportes.getClasificacion(), reportes.getEstado(), reportes.getEstatus(), reportes.getEtiquetau()
+        );
+
+        if (reportexist.isEmpty()) {
+            reporteService.guardarReporte(reportes);
+            System.out.println(reportes);
+            System.out.println("No repetido");
+            return ResponseEntity.ok("Reporte guardado correctamente.");
+        } else {
+            System.out.println("Repetido");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Alguien más ha reportado el mismo contenedor");
+        }
+    }
+
+
 
     @GetMapping("/search-estatus/{estatus}")
     public ResponseEntity<?> findByEstatus(@PathVariable String estatus){

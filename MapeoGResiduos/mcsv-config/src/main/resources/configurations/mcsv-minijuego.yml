@@ -11,9 +11,6 @@ spring:
       prefix: /templates/
       suffix: .html
 
-
-
-
 eureka:
   instance:
     hostname: localhost

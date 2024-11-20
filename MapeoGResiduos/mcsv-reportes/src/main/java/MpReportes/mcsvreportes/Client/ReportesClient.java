@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "mcsv-login", url = "localhost:9090/auth")
+@FeignClient(name = "mcsv-login", url = "${feign.client.mcsv-login.url}")
 public interface ReportesClient {
-
     @GetMapping("/search-all-username")
     List<UsernameDTO> findAll();
 

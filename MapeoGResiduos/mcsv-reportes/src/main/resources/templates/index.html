@@ -7,13 +7,13 @@
     <meta name="author" content="" />
     <title>Mapa Interactivo del Cutonala</title>
 
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <link rel="stylesheet" href="css/Botones.css"/>
-    <link href="css/mapa.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="/css/Botones.css"/>
+    <link href="/css/mapa.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="css/stylesG.css">
+    <link rel="stylesheet" href="/css/stylesG.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
@@ -29,7 +29,7 @@
                 <li class="nav-item dropdown">
                     <a tabindex="2" aria-label="Menu desplegable" class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Otros</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="http://localhost:9090/index">Reportes</a></li>
+                        <li><a class="dropdown-item" href="http://node208364-env-8685750.sp1.br.saveincloud.net.br:13944/login/index">Reportes</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
@@ -60,7 +60,7 @@
     </div>
 
     <div id="cuadroreporte" class="cuadroreporte">
-        <form th:action="@{/crear}" th:object = "${reportes}" method="post" name="Reportar">
+        <form th:action="@{http://node208363-env-8685750.sp1.br.saveincloud.net.br:13372/reportes/crear}" th:object = "${reportes}" method="post" name="Reportar">
 
             <input type="text" th:field="*{etiquetau}" id="ub" readonly/>
 
@@ -99,9 +99,9 @@
     </div>
     
 </div>
-<a id="minijuegolink" tabindex="2" href="http://localhost:9990/mapa" role="button" ><img width="70px" src="Images/minigame-dark.png" alt=""></a>
+<a id="minijuegolink" tabindex="2" href="http://node208618-env-8685750.sp1.br.saveincloud.net.br:16107/mapa" role="button" ><img width="70px" src="/Images/minigame-dark.png" alt=""></a>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="js/Geolocalizacion.js"></script>
+<script src="/js/Geolocalizacion.js"></script>
 </body>
 </html>
