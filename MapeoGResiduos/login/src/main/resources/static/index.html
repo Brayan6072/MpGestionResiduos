@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="css/Login.css">
+    <link rel="stylesheet" href="/css/Login.css">
     <title>Iniciar Sesion</title>
 </head>
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up">
-        <form id="registerForm" method="post" th:object="${user}" th:action="@{/auth/register}">
+        <form id="registerForm" method="post" th:object="${user}" th:action="@{/api/v1/register}">
 
             <h1>Crear Cuenta</h1>
 
@@ -51,10 +51,10 @@
         </div>
     </div>
 
-    
+
 </div>
-<a class="home-link" href="http://localhost:8099/index"><img src="icon/home.png" alt=""></a>
-<script src="js/scriptlg.js"></script>
+<a class="home-link" href="https://mapeo-gestion-de-residuos.web.app/"><img src="/icon/home.png" alt=""></a>
+<script src="/js/scriptlg.js"></script>
 
 </body>
 </html>

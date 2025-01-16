@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import mcsvs.login.Auth.AuthResponse;
 import mcsvs.login.Auth.AuthService;
 import mcsvs.login.Auth.LoginRequest;
+import mcsvs.login.Auth.RegisterRequest;
 import mcsvs.login.Client.ReportesClient;
 import mcsvs.login.DTO.ReportesDTO;
 import mcsvs.login.User.UserRepository;
@@ -50,7 +51,6 @@ public class loginController {
 
         return reportesweek;
     }
-
     @PostMapping(value = "/login")
     public String login(LoginRequest request, Model model, Model token, String estatus, Model modelm, Model models){
 
@@ -68,15 +68,37 @@ public class loginController {
 
             List<Map<String, Object>> reportesweek = obtenerReportesSemanal();
             models.addAttribute("reportessemanal", reportesweek);
-            
-            return "Historial";
+
+            return "historial";
         }else{
             return "index";
         }
 
     }
 
+    @PostMapping(value = "/register")
+    public String register(RegisterRequest request, Model model, String estatus, Model modelm, Model models){
 
+        authService.register(request);
+        estatus = "Rojo";
+        List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
+        model.addAttribute("reportesList", reportesList);
+
+        List<Map<String, Object>> reportesmonth = obtenerReportesMensuales();
+        modelm.addAttribute("reportesmes", reportesmonth);
+
+        List<Map<String, Object>> reportesweek = obtenerReportesSemanal();
+        models.addAttribute("reportessemanal", reportesweek);
+
+
+        return "historial";
+    }
+
+    @GetMapping("/Signout")
+    public String signout (Model token){
+        token.addAttribute("useractivo", null);
+        return "index";
+    }
     @GetMapping("/search-estatus/{estatus}")
     public String getReportesByEstatus(@PathVariable String estatus, Model model, Model modelm, Model models) {
         estatus = "Rojo";

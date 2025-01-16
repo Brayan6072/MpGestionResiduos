@@ -6,14 +6,15 @@ spring:
     name: mcsv-reportes
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${DB_URL:jdbc:mysql://localhost:3306/notificaciones}                    
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:root}
+    url: ${DB_URL:jdbc:mysql://mysql-8ebd880-alumnos-859e.l.aivencloud.com:28982/notificaciones}
+    username: ${DB_USERNAME:}
+    password: ${DB_PASSWORD:}
 
   jpa:
     hibernate:
       ddl-auto: update
     database: mysql
+    show-sql: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
   thymeleaf:
@@ -27,7 +28,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: brayandelgadodiaz03@gmail.com
-    password: muspunqeepftmfma
+    password: 
     properties:
       mail:
         smtp:
@@ -37,7 +38,10 @@ spring:
           connectiontimeout: 5000
           timeout: 5000
           writetimeout: 5000
-
+feign:
+    client:
+        mcsv-login:
+            url: ${FOREIGN_CLIENT_URL:http://localhost:9090/auth}
 eureka:
   instance:
     hostname: localhost
@@ -47,4 +51,11 @@ eureka:
 
 
 
-
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            SQL: TRACE

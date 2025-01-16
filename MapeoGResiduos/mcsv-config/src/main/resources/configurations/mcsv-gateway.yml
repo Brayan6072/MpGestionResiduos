@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mcsv-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: mcsv-reportes
+          uri: lb://MCSV-REPORTES
+          predicates:
+            - Path=/reportes/**
+        - id: microservice-login
+          uri: lb://MICROSERVICE-LOGIN
+          predicates:
+            - Path=/auth/**,/api/v1/**
+
+
+
+logging:
+  level:
+    root: info
+    org.springframework.cloud.gateway: trace
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: info
+

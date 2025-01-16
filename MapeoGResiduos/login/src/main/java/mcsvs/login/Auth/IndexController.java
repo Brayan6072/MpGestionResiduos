@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-@Controller
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
+@RequestMapping("login")
 public class IndexController {
 
     @GetMapping("/index")
@@ -14,15 +16,5 @@ public class IndexController {
         User user = new User();
         model.addAttribute("user", user);
         return "index";
-    }
-
-    @GetMapping("/Signout")
-    public String signout (Model token){
-
-        token.addAttribute("useractivo", null);
-
-        return "index";
-
-
     }
 }

@@ -41,7 +41,7 @@ marcador1.addTo(grupoDificilReciclaje);
 marcador1.addTo(grupoOrganicos);
 marcador1.addTo(grupoPlasticos);
 
-marcador1.bindPopup("<h3> Contenedor de reciclaje A </h3>  <p> Con cordenadas :20.567257, -103.226077</p> <img class='imgbt' src='Images/Botes/img (22).jpg' /> ")
+marcador1.bindPopup("<h3> Contenedor de reciclaje A </h3>  <p> Con cordenadas :20.567257, -103.226077</p> <img class='imgbt' src='/Images/Botes/img (22).jpg' /> ")
 marcador1.on('click', function(e) {
     mostrarCuadroTexto(
         'Contenedores de reciclaje',
@@ -60,7 +60,7 @@ marcador2.addTo(grupoDificilReciclaje);
 marcador2.addTo(grupoMetal);
 marcador2.addTo(grupoPlasticos);
 
-marcador2.bindPopup("<h3> Contenedor de reciclaje B </h3>  <p> Con cordenadas :20.566290, -103.228069 </p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador2.bindPopup("<h3> Contenedor de reciclaje B </h3>  <p> Con cordenadas :20.566290, -103.228069 </p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador2.on('click', function(e) {
 
     mostrarCuadroTexto('Contenedores de reciclaje',[img_plasticos, img_papel, img_metal, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores B");
@@ -74,7 +74,7 @@ marcador3.addTo(grupoDificilReciclaje);
 marcador3.addTo(grupoOrganicos);
 marcador3.addTo(grupoPlasticos);
 
-marcador3.bindPopup("<h3> Contenedor de reciclaje C </h3>  <p> Con cordenadas :20.567930, -103.227679 </p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador3.bindPopup("<h3> Contenedor de reciclaje C </h3>  <p> Con cordenadas :20.567930, -103.227679 </p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador3.on('click', function(e) {
 
    mostrarCuadroTexto('Contenedores de reciclaje', [img_papel, img_inorganicos, img_organicos,img_plasticos],'Puedes reciclar este tipo de residuos', true, "Contenedores C");
@@ -89,7 +89,7 @@ marcador4.addTo(grupoVidrio);
 marcador4.addTo(grupoDificilReciclaje);
 marcador4.addTo(grupoPlasticos);
 
-marcador4.bindPopup("<h3> Contenedor de reciclaje D </h3>  <p> Con cordenadas :20.567837917655613, -103.22862054715823 </p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador4.bindPopup("<h3> Contenedor de reciclaje D </h3>  <p> Con cordenadas :20.567837917655613, -103.22862054715823 </p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador4.on('click', function(e) {
     mostrarCuadroTexto('Contenedores de reciclaje',[img_papel, img_vidrio, img_plasticos, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores D")
     grafica(['Papel', 'Vidrio', 'Plasticos', 'Dificil Reciclaje'])
@@ -103,7 +103,7 @@ marcador5.addTo(grupoVidrio);
 marcador5.addTo(grupoDificilReciclaje);
 marcador5.addTo(grupoPlasticos);
 
-marcador5.bindPopup("<h3> Contenedor de reciclaje E </h3>  <p> Con cordenadas : 20.566773982106564, -103.22694831474072</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador5.bindPopup("<h3> Contenedor de reciclaje E </h3>  <p> Con cordenadas : 20.566773982106564, -103.22694831474072</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador5.on('click', function(e) {
     mostrarCuadroTexto('Contenedores de reciclaje',[img_plasticos, img_vidrio, img_metal, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores E")
     grafica(['Plasticos','Vidrio', 'Metal', 'Dificil Reciclaje'])
@@ -118,7 +118,7 @@ marcador6.addTo(grupoDificilReciclaje);
 marcador6.addTo(grupoPlasticos);
 marcador6.addTo(grupoPapel);
 
-marcador6.bindPopup("<h3> Contenedor de reciclaje F </h3>  <p> Con cordenadas : 20.567132188574096, -103.22762347254994</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador6.bindPopup("<h3> Contenedor de reciclaje F </h3>  <p> Con cordenadas : 20.567132188574096, -103.22762347254994</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador6.on('click', function(e) {
 
    mostrarCuadroTexto('Contenedores de reciclaje',[img_papel, img_metal, img_vidrio, img_plasticos, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores F")
@@ -133,7 +133,7 @@ marcador7.addTo(grupoDificilReciclaje);
 marcador7.addTo(grupoPlasticos);
 marcador7.addTo(grupoPapel);
 
-marcador7.bindPopup("<h3> Contenedor de reciclaje G </h3>  <p> Con cordenadas : 20.56711414829566, -103.23022014143083</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador7.bindPopup("<h3> Contenedor de reciclaje G </h3>  <p> Con cordenadas : 20.56711414829566, -103.23022014143083</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador7.on('click', function(e) {
 
    mostrarCuadroTexto('Contenedores de reciclaje',[img_papel,img_organicos, img_plasticos, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores G")
@@ -145,7 +145,7 @@ var marcador8 =  L.marker([20.567099872026592, -103.22819050770538],{icon: custo
 marcador8.addTo(grupoDificilReciclaje);
 marcador8.addTo(grupoPapel);
 
-marcador8.bindPopup("<h3> Contenedor de reciclaje H </h3>  <p> Con cordenadas : 20.567099872026592, -103.22819050770538</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador8.bindPopup("<h3> Contenedor de reciclaje H </h3>  <p> Con cordenadas : 20.567099872026592, -103.22819050770538</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador8.on('click', function(e) {
 
    mostrarCuadroTexto('Contenedores de reciclaje',[img_plasticos,img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores H")
@@ -157,7 +157,7 @@ var marcador9 =  L.marker([20.56710049983879, -103.2281167469584],{icon: customI
 marcador9.addTo(grupoMetal);
 marcador9.addTo(grupoPapel);
 
-marcador9.bindPopup("<h3> Contenedor de reciclaje I </h3>  <p> Con cordenadas : 20.56710049983879, -103.2281167469584</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador9.bindPopup("<h3> Contenedor de reciclaje I </h3>  <p> Con cordenadas : 20.56710049983879, -103.2281167469584</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador9.on('click', function(e) {
 
    mostrarCuadroTexto('Contenedores de reciclaje',[img_papel, img_metal],'Puedes reciclar este tipo de residuos', true, "Contenedores I")
@@ -171,7 +171,7 @@ marcador11.addTo(grupoVidrio);
 marcador11.addTo(grupoDificilReciclaje);
 marcador11.addTo(grupoPlasticos);
 
-marcador11.bindPopup("<h3> Contenedor de reciclaje J </h3>  <p> Con cordenadas : 20.567080308476694, -103.22619588100355</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador11.bindPopup("<h3> Contenedor de reciclaje J </h3>  <p> Con cordenadas : 20.567080308476694, -103.22619588100355</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador11.on('click', function(e) {
     mostrarCuadroTexto('Contenedores de reciclaje',[img_plasticos, img_vidrio, img_metal, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores J")
     grafica(['Plasticos', 'Vidrio', 'Metal', 'Dificil Reciclaje'])
@@ -185,7 +185,7 @@ marcador12.addTo(grupoVidrio);
 marcador12.addTo(grupoDificilReciclaje);
 marcador12.addTo(grupoPlasticos);
 
-marcador12.bindPopup("<h3> Contenedor de reciclaje K </h3>  <p> Con cordenadas : 20.567004373533045, -103.22994141729409</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador12.bindPopup("<h3> Contenedor de reciclaje K </h3>  <p> Con cordenadas : 20.567004373533045, -103.22994141729409</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador12.on('click', function(e) {
     mostrarCuadroTexto('Contenedores de reciclaje',[img_metal, img_vidrio, img_plasticos, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true,"Contenedores K")
     grafica(['Metal', 'Vidrio', 'Plasticos', 'Dificil Reciclaje'])
@@ -199,7 +199,7 @@ marcador13.addTo(grupoVidrio);
 marcador13.addTo(grupoDificilReciclaje);
 marcador13.addTo(grupoPlasticos);
 
-marcador13.bindPopup("<h3> Contenedor de reciclaje L </h3>  <p> Con cordenadas : 20.566560166194456, -103.2258512664946</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador13.bindPopup("<h3> Contenedor de reciclaje L </h3>  <p> Con cordenadas : 20.566560166194456, -103.2258512664946</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador13.on('click', function(e) {
     mostrarCuadroTexto('Contenedores de reciclaje',[img_plasticos, img_metal, img_vidrio, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores L")
     grafica(['Plasticos', 'Metal', 'Vidrio', 'Dificil Reciclaje'])
@@ -214,7 +214,7 @@ marcador14.addTo(grupoVidrio);
 marcador14.addTo(grupoDificilReciclaje);
 marcador14.addTo(grupoPlasticos);
 
-marcador14.bindPopup("<h3> Contenedor de reciclaje M </h3>  <p> Con cordenadas : 20.56660798126268, -103.22758511374145</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador14.bindPopup("<h3> Contenedor de reciclaje M </h3>  <p> Con cordenadas : 20.56660798126268, -103.22758511374145</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador14.on('click', function(e) {
 
    mostrarCuadroTexto('Contenedores de reciclaje',[img_metal, img_vidrio, img_plasticos, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores M")
@@ -228,7 +228,7 @@ marcador15.addTo(grupoVidrio);
 marcador15.addTo(grupoDificilReciclaje);
 marcador15.addTo(grupoPlasticos);
 
-marcador15.bindPopup("<h3> Contenedor de reciclaje N </h3>  <p> Con cordenadas : 20.566429054105644, -103.22697759340359</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador15.bindPopup("<h3> Contenedor de reciclaje N </h3>  <p> Con cordenadas : 20.566429054105644, -103.22697759340359</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador15.on('click', function(e) {
     mostrarCuadroTexto('Contenedores de reciclaje',[img_metal, img_vidrio, img_plasticos,img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores N")
     grafica(['Metal', 'Vidrio', 'Plasticos', 'Dificil Reciclaje'])
@@ -244,7 +244,7 @@ marcador16.addTo(grupoPlasticos);
 marcador16.addTo(grupoPapel);
 marcador16.addTo(grupoOrganicos);
 
-marcador16.bindPopup("<h3> Contenedor de reciclaje U </h3>  <p> Con cordenadas : 20.566374414071444, -103.2278476803845</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador16.bindPopup("<h3> Contenedor de reciclaje U </h3>  <p> Con cordenadas : 20.566374414071444, -103.2278476803845</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador16.on('click', function(e) {
     mostrarCuadroTexto('Contenedores de reciclaje',[img_plasticos, img_vidrio, img_metal, img_organicos, img_papel, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true,"Contenedores U")
     grafica(['Plasticos', 'Vidrio', 'Metal','Organicos','Papel', 'Dificil Reciclaje'])
@@ -260,7 +260,7 @@ marcador17.addTo(grupoPlasticos);
 marcador17.addTo(grupoPapel);
 marcador17.addTo(grupoOrganicos);
 
-marcador17.bindPopup("<h3> Contenedor de reciclaje O </h3>  <p> Con cordenadas : 20.56631188320407, -103.22738529234732</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador17.bindPopup("<h3> Contenedor de reciclaje O </h3>  <p> Con cordenadas : 20.56631188320407, -103.22738529234732</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador17.on('click', function(e) {
 
    mostrarCuadroTexto('Contenedores de reciclaje',[img_papel, img_organicos, img_metal, img_vidrio, img_plasticos, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores O")
@@ -273,7 +273,7 @@ marcador18.addTo(grupoPlasticos);
 marcador18.addTo(grupoMetal);
 marcador18.addTo(grupoVidrio);
 
-marcador18.bindPopup("<h3> Contenedor de reciclaje Q </h3>  <p> Con cordenadas : 20.56629947926341, -103.2290175527782</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador18.bindPopup("<h3> Contenedor de reciclaje Q </h3>  <p> Con cordenadas : 20.56629947926341, -103.2290175527782</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador18.on('click', function(e) {
     mostrarCuadroTexto('Contenedores de reciclaje',[img_metal, img_vidrio, img_plasticos, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores Q")
     grafica(['Metal', 'Vidrio', 'Plasticos', 'Dificil Reciclaje'])
@@ -287,7 +287,7 @@ marcador19.addTo(grupoPlasticos);
 marcador19.addTo(grupoPapel);
 marcador19.addTo(grupoOrganicos);
 
-marcador19.bindPopup("<h3> Contenedor de reciclaje R </h3>  <p> Con cordenadas : 20.565390042111762, -103.22811060293905</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador19.bindPopup("<h3> Contenedor de reciclaje R </h3>  <p> Con cordenadas : 20.565390042111762, -103.22811060293905</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador19.on('click', function(e) {
    mostrarCuadroTexto('Contenedores de reciclaje',[img_papel, img_organicos, img_plasticos, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true, "Contenedores R")
    grafica(['Papel', 'Organicos', 'Plasticos', 'Dificil Reciclaje'])
@@ -299,7 +299,7 @@ marcador20.addTo(grupoDificilReciclaje);
 marcador20.addTo(grupoPlasticos);
 marcador20.addTo(grupoVidrio);
 
-marcador20.bindPopup("<h3> Contenedor de reciclaje S </h3>  <p> Con cordenadas : </p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador20.bindPopup("<h3> Contenedor de reciclaje S </h3>  <p> Con cordenadas : </p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador20.on('click', function(e) {
 
  mostrarCuadroTexto('Contenedores de reciclaje',[img_vidrio, img_plasticos, img_dificil_reclaje],'Puedes reciclar este tipo de residuos', true,  'Contenedores S')
@@ -312,7 +312,7 @@ var marcador21 =  L.marker([20.56554834934846, -103.22709039794258],{icon: custo
 marcador21.addTo(grupoMetal);
 marcador21.addTo(grupoPapel);
 
-marcador21.bindPopup("<h3> Contenedor de reciclaje T </h3>  <p> Con cordenadas : 20.56554834934846, -103.22709039794258</p> <img class='imgbt' src='Images/Botes/img (22).jpg'  /> ")
+marcador21.bindPopup("<h3> Contenedor de reciclaje T </h3>  <p> Con cordenadas : 20.56554834934846, -103.22709039794258</p> <img class='imgbt' src='/Images/Botes/img (22).jpg'  /> ")
 marcador21.on('click', function(e) {
     mostrarCuadroTexto('Contenedores de reciclaje',[img_papel, img_metal],'Puedes reciclar este tipo de residuos', true,"Contenedores T")
     grafica(['Papel', 'Metal'])
@@ -379,19 +379,19 @@ function getPosition (position){
 
 
 //****************************************************
-var img_madera = 'Images/madera.png';
-var img_metal = 'Images/Metal.png';
-var img_organicos = 'Images/organicos.png';
-var img_sanitarios = 'Images/sanitarios.png';
-var img_dificil_reclaje ='Images/dificil_reciclaje.png';
-var img_papel = 'Images/Papel.png';
-var img_vidrio = 'Images/Vidrio.png';
-var img_plasticos = 'Images/Plasticos.png';
+var img_madera = '/Images/madera.png';
+var img_metal = '/Images/Metal.png';
+var img_organicos = '/Images/organicos.png';
+var img_sanitarios = '/Images/sanitarios.png';
+var img_dificil_reclaje ='/Images/dificil_reciclaje.png';
+var img_papel = '/Images/Papel.png';
+var img_vidrio = '/Images/Vidrio.png';
+var img_plasticos = '/Images/Plasticos.png';
 var img_inorganicos = img_dificil_reclaje;
-var img_construccion = 'Images/.png';
-var img_peligrosos='Images/Peligrosos.png';
-var img_unicel='Images/Unicel.png';
-var img_textiles='Images/Textiles.png';
+var img_construccion = '/Images/.png';
+var img_peligrosos='/Images/Peligrosos.png';
+var img_unicel='/Images/Unicel.png';
+var img_textiles='/Images/Textiles.png';
 
 function getRandomPercentage() {
   return (Math.random() * 100).toFixed(2);
