@@ -16,7 +16,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
-@CrossOrigin(origins = "https://mapeo-gestion-de-residuos.web.app/")
 @RequestMapping("/reportes")
 public class ReportesController {
 

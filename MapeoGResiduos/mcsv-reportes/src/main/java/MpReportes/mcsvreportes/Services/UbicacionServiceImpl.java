@@ -23,10 +23,10 @@ public class UbicacionServiceImpl implements UbicacionService{
     }
 
 
-   /* @Override
-    public List<String> findClasificacionesByContenedorNombre(String contenedorNombre) {
+    @Override
+    public List<Object[]> findClasificacionesByContenedorNombre(String contenedorNombre) {
         return localizacionContenedoresRepository.findClasificacionesByContenedorNombre(contenedorNombre);
-    }*/
+    }
 
     @Override
     public List<Object[]> getContenedoresConClasificaciones() {

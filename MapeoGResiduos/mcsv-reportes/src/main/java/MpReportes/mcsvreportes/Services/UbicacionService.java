@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface UbicacionService {
 
-   // List<String> findClasificacionesByContenedorNombre(String contenedorNombre);
+    List<Object[]> findClasificacionesByContenedorNombre(String contenedorNombre);
     List<Object[]> getContenedoresConClasificaciones();
 }

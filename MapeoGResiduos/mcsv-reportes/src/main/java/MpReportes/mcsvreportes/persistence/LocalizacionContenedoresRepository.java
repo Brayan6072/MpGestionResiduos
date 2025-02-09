@@ -12,14 +12,14 @@ import java.util.List;
 
 @Repository
 public interface LocalizacionContenedoresRepository extends JpaRepository<LocalizacionContenedores, Long> {
-/*
+
     @Query(value = "SELECT clasificaciones.nombre AS clasificacion " +
             "FROM localizacion_contenedores " +
             "INNER JOIN clasificaciones ON localizacion_contenedores.clasificacion_id = clasificaciones.id " +
             "INNER JOIN contenedores ON localizacion_contenedores.contenedor_id = contenedores.id " +
             "WHERE contenedores.nombre = :contenedorNombre", nativeQuery = true)
-    List<String> findClasificacionesByContenedorNombre(@Param("contenedorNombre") String contenedorNombre);
-*/
+    List<Object[]> findClasificacionesByContenedorNombre(@Param("contenedorNombre") String contenedorNombre);
+
     @Query(value = "SELECT \n" +
             "    c.nombre AS nombre_contenedor,\n" +
             "    c.latitud,\n" +

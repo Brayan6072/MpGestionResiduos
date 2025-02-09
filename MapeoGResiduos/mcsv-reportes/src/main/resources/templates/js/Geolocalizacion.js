@@ -21,10 +21,10 @@ var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/
 CartoDB_Positron.addTo(mapa);
 
 var customIcon = L.icon({
-    iconUrl: 'https://cdn.icon-icons.com/icons2/2159/PNG/512/map_marker_location_placeholder_icon_132928.png',  
-    iconSize: [34, 34],             
-    iconAnchor: [18, 34],           
-    popupAnchor: [0, -32]           
+    iconUrl: 'https://cdn.icon-icons.com/icons2/2159/PNG/512/map_marker_location_placeholder_icon_132928.png',
+    iconSize: [34, 34],
+    iconAnchor: [18, 34],
+    popupAnchor: [0, -32]
 });
 
 var grupoPapel = L.layerGroup();
