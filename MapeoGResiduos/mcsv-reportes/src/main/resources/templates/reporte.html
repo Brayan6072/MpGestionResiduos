@@ -38,38 +38,37 @@
 
 
     <div class="container">
-        <form th:action="@{http://localhost:8099/reportes/crear}" method="post" name="Reportar">
-            <h1 class="etiqueta" th:text="${etiqueta}"></h1>
+        <form th:action="@{http://localhost:8099/reportes/crear}" th:object="${reportes}" method="post" name="Reportar">
 
+            <h1 class="etiqueta"></h1>
+            <input id="etiqueta" type="hidden" th:field="*{etiquetau}">
             <section class="classification">
                 <h2>Clasificación</h2>
                 <div class="classification-grid">
-                    <div class="classification" th:each="reporte : ${reporte}">
+                    <div class="classification" th:each="contenedor : ${contenedores}">
                         <img class="classification-btn"
-                             th:src="@{/images/contenedores/{img}(img=${reporte[0] + '.png'})}"
-                             th:alt="${'Imagen de ' + reporte[0]}" />
-                        <input class="contenedor_cls" type="radio" name="clasificacion" th:value="${reporte[0]}">
+                             th:src="@{/images/contenedores/{img}(img=${contenedor[0] + '.png'})}"
+                             th:alt="${'Imagen de ' + contenedor[0]}" />
+                        <input class="contenedor_cls" type="radio" name="clasificacion" th:value="${contenedor[0]}" th:field="*{clasificacion}">
                     </div>
                 </div>
             </section>
-            <script>
 
-            </script>
             <section class="container-state">
                 <h2>Estado del Contenedor</h2>
                 <div class="radio-group">
                     <label class="radio-label">
-                        <input class="rd_btn" type="radio" name="estado" value="lleno">
+                        <input class="rd_btn" type="radio" name="estado" value="Lleno"  th:field="*{estado}">
                         <span class="radio-custom"></span>
                         Lleno
                     </label>
                     <label class="radio-label">
-                        <input class="rd_btn" type="radio" name="estado" value="danado">
+                        <input class="rd_btn" type="radio" name="estado" value="Dañado" th:field="*{estado}">
                         <span class="radio-custom"></span>
                         Dañado
                     </label>
                     <label class="radio-label">
-                        <input class="rd_btn" type="radio" name="estado" value="mezclada">
+                        <input class="rd_btn" type="radio" name="estado" value="Basura Mezclada" th:field="*{estado}">
                         <span class="radio-custom"></span>
                         Basura Mezclada
                     </label>
@@ -86,6 +85,19 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="/js/script.js"></script>
+<script th:inline="javascript">
 
+    const etiqueta = /*[[${etiqueta}]]*/ [];
+    console.log(etiqueta);
+
+    var lbetiqueta = document.querySelector('.etiqueta');
+    var lb = document.querySelector('#etiqueta');
+    lbetiqueta.textContent = etiqueta;
+    lb.value = etiqueta;
+
+
+
+
+</script>
 </body>
 </html>

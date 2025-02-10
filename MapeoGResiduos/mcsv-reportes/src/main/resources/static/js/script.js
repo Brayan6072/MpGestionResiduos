@@ -58,4 +58,3 @@ var img_textiles='Images/contenedores/Textiles.png';
 
 
 
-

@@ -36,10 +36,11 @@ public class UbicacionesController {
     }
 
     @GetMapping("/reporte/{namecontenedor}")
-    public String Reporte(@PathVariable String namecontenedor,Model model, Model etiqueta){
-        List<Object[]> reporte = ubicacionService.findClasificacionesByContenedorNombre(namecontenedor);
-        model.addAttribute("reporte", reporte);
+    public String Reporte(@PathVariable String namecontenedor,Model contenedores, Model etiqueta, @ModelAttribute("reportes") Reportes reportes){
+        List<Object[]> contenedor = ubicacionService.findClasificacionesByContenedorNombre(namecontenedor);
+        contenedores.addAttribute("contenedores", contenedor);
         etiqueta.addAttribute("etiqueta", namecontenedor);
+
         return "reporte";
     }
 

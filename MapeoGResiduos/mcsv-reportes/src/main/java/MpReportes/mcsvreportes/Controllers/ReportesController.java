@@ -28,7 +28,7 @@ public class ReportesController {
     public String Index(Model model) {
         Reportes reportes = new Reportes();
         model.addAttribute("reportes", reportes);
-        return "index";
+        return "mapa";
     }
 
     @PostMapping("/crear")
@@ -45,7 +45,7 @@ public class ReportesController {
 
         }
 
-        return "index";
+        return "mapa";
     }
 
     @PostMapping("/reportar")
