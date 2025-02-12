@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="/css/formdatacontainer.css">
+</head>
+<body>
+
+<div id="map" style="height: 500px;">
+
+</div>
+<form class="formcontainer">
+    <div class="datacontainer">
+        <label for="nombre">Contenedor:</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Asigna una letra unica">
+        <label for="longitud">Longitud:</label>
+        <input type="text" name="longitud" id="longitud">
+        <label for="latitud">Latitud:</label>
+        <input type="text" name="latitud" id="latitud">
+    </div>
+
+
+    <div class="bottom-gallery">
+        <div class="image-container">
+
+            <img src="Images/contenedores/organicos.png" alt="Placeholder image 1">
+            <input type="checkbox" name="organicos" id="organicos" value="5">
+        </div>
+        <div class="image-container">
+            <img src="Images/contenedores/Papel.png" alt="Placeholder image 2">
+            <input type="checkbox" name="papel" id="papel" value="1">
+        </div>
+        <div class="image-container">
+            <img src="Images/contenedores/dificil_reciclaje.png" alt="Placeholder image 3">
+            <input type="checkbox" name="dificil_reciclaje" id="dificil_reciclaje" value="3">
+        </div>
+        <div class="image-container">
+            <img src="Images/contenedores/Plasticos.png" alt="Placeholder image 4">
+            <input type="checkbox" name="plasticos" id="plasticos" value="6">
+        </div>
+        <div class="image-container">
+            <img src="Images/contenedores/Vidrio.png" alt="Placeholder image 3">
+            <input type="checkbox" name="vidrio" id="vidrio" value="2">
+        </div>
+        <div class="image-container">
+            <img src="Images/contenedores/Metal.png" alt="Placeholder image 4">
+            <input type="checkbox" name="metal" id="metal" value="4">
+        </div>
+    </div>
+
+    </div>
+    <button type="submit" class="submit-btn">Reportar</button>
+
+</form>
+
+
+
+<script src="/js/Getlocation.js"></script>
+</body>
+</html>

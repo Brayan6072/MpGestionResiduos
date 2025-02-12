@@ -10,4 +10,6 @@ public interface UbicacionService {
 
     List<Object[]> findClasificacionesByContenedorNombre(String contenedorNombre);
     List<Object[]> getContenedoresConClasificaciones();
+    LocalizacionContenedores createLocalizacion(LocalizacionContenedores localizacionContenedores);
+
 }

@@ -43,14 +43,15 @@ fetch(url)
       var punteros = [];
       var marcadores = data;
        var divmain = document.querySelector(".bottom-gallery");
+
 for (var i = 0; i < marcadores.length; i++) {
 
-    punteros[i] = L.marker([marcadores[i][2], marcadores[i][1]], {icon: customIcon});
+    punteros[i] = L.marker([marcadores[i][1], marcadores[i][2]], {icon: customIcon});
 
     var residuos = marcadores[i][3].split(",").map(r => r.trim());
 
     residuos.forEach(grupo => {
-            
+
             switch (grupo) {
                 case "Papel":
                     punteros[i].addTo(grupoPapel);
@@ -70,10 +71,10 @@ for (var i = 0; i < marcadores.length; i++) {
                 case "Metal":
                     punteros[i].addTo(grupoMetal);
                     break;
-            }        
+            }
 
         });
-    punteros[i].bindPopup("<img class='imgbt' src='/Images/Botes/img (22).jpg'  onload='getimg(" + JSON.stringify(residuos) + ")';/> <div class='content'><h3 class='etiqueta_contenedor'>" + marcadores[i][0] + "</h3>  <p class='coordenadas_contenedor'> Con cordenadas :" + marcadores[i][2] + ", " + marcadores[i][1] + "</p><a href='http://localhost:8099/contenedores/ubicaciones/reporte/"+marcadores[i][0]+"'><button class='btn-reportar'>Reportar</button></a></div>");
+    punteros[i].bindPopup("<img class='imgbt' src='/Images/Botes/img (22).jpg'  onload='getimg(" + JSON.stringify(residuos) + ")';/> <div class='content'><h3 class='etiqueta_contenedor'>" + marcadores[i][0] + "</h3>  <p class='coordenadas_contenedor'> Con cordenadas :" + marcadores[i][1] + ", " + marcadores[i][2] + "</p><a href='http://localhost:8099/contenedores/ubicaciones/reporte/"+marcadores[i][0]+"'><button class='btn-reportar'>Reportar</button></a></div>");
 
 }
 
@@ -151,7 +152,7 @@ function getimg(residuos) {
         return;
     }
 
-    divmain.innerHTML = ''; 
+    divmain.innerHTML = '';
 
     for (var i = 0; i < residuos.length; i++) {
         var divcls = document.createElement('div');
@@ -169,6 +170,7 @@ var btnsp = document.getElementById("btn-sign-up");
 btnsignup.addEventListener("click", function(){
     window.location.href = "http://localhost:9090/login/index";
 });
+
 
 var btngame = document.getElementById("gamecontroller");
 

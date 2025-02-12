@@ -1,6 +1,7 @@
 package MpReportes.mcsvreportes.Controllers;
 
 import MpReportes.mcsvreportes.DTO.ContenedoresDTO;
+import MpReportes.mcsvreportes.Entities.LocalizacionContenedores;
 import MpReportes.mcsvreportes.Entities.Reportes;
 import MpReportes.mcsvreportes.Services.UbicacionServiceImpl;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,25 @@ public class UbicacionesController {
         return "reporte";
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<?> createLocalizacion(@RequestBody LocalizacionContenedores localizacionContenedores){
+        return ResponseEntity.ok(ubicacionService.createLocalizacion(localizacionContenedores));
 
-
+    }
+    /*
+    {
+        "id": 83,
+        "contenedores": {
+            "id": 24,
+            "nombre": null,
+            "longitud": null,
+            "latitud": null
+        },
+        "clasificaciones": {
+            "id": 1,
+            "nombre": null
+        }
+    }
+    */
 
 }

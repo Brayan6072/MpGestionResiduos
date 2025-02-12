@@ -33,5 +33,10 @@ public class UbicacionServiceImpl implements UbicacionService{
         return  localizacionContenedoresRepository.getContenedoresConClasificaciones();
     }
 
+    @Override
+    public LocalizacionContenedores createLocalizacion(LocalizacionContenedores localizacionContenedores) {
+        return localizacionContenedoresRepository.save(localizacionContenedores);
+    }
+
 
 }
