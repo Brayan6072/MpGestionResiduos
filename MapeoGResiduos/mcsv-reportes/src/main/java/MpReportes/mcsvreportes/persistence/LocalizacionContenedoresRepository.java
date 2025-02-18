@@ -1,12 +1,16 @@
 package MpReportes.mcsvreportes.persistence;
 
 import MpReportes.mcsvreportes.DTO.ContenedoresDTO;
+import MpReportes.mcsvreportes.DTO.LocalizacionDTO;
 import MpReportes.mcsvreportes.Entities.LocalizacionContenedores;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,6 +38,5 @@ public interface LocalizacionContenedoresRepository extends JpaRepository<Locali
             "GROUP BY \n" +
             "    c.id, c.nombre, c.latitud, c.longitud;", nativeQuery = true)
     List<Object[]> getContenedoresConClasificaciones();
-
 
 }

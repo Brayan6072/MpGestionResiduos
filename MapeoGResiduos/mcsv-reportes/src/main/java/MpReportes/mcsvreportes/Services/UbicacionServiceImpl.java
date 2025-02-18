@@ -1,25 +1,31 @@
 package MpReportes.mcsvreportes.Services;
 
 import MpReportes.mcsvreportes.DTO.ContenedoresDTO;
+import MpReportes.mcsvreportes.DTO.LocalizacionDTO;
+import MpReportes.mcsvreportes.Entities.Clasificaciones;
+import MpReportes.mcsvreportes.Entities.Contenedores;
 import MpReportes.mcsvreportes.Entities.LocalizacionContenedores;
+import MpReportes.mcsvreportes.persistence.ClasificacionesRepository;
 import MpReportes.mcsvreportes.persistence.LocalizacionContenedoresRepository;
 import MpReportes.mcsvreportes.persistence.ContenedoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class UbicacionServiceImpl implements UbicacionService{
 
 
     private final LocalizacionContenedoresRepository localizacionContenedoresRepository;
+    private final ContenedoresRepository contenedoresRepository;
+    private final ClasificacionesRepository clasificacionesRepository;
 
-    public UbicacionServiceImpl(LocalizacionContenedoresRepository localizacionContenedoresRepository) {
+    public UbicacionServiceImpl(LocalizacionContenedoresRepository localizacionContenedoresRepository, ContenedoresRepository contenedoresRepository, ClasificacionesRepository clasificacionesRepository) {
         this.localizacionContenedoresRepository = localizacionContenedoresRepository;
+        this.contenedoresRepository = contenedoresRepository;
+        this.clasificacionesRepository = clasificacionesRepository;
     }
 
 
@@ -36,6 +42,27 @@ public class UbicacionServiceImpl implements UbicacionService{
     @Override
     public LocalizacionContenedores createLocalizacion(LocalizacionContenedores localizacionContenedores) {
         return localizacionContenedoresRepository.save(localizacionContenedores);
+    }
+
+    @Override
+    public List<LocalizacionContenedores> addLocation(LocalizacionDTO localizacionDTO) {
+        Contenedores contenedor = contenedoresRepository.findById(localizacionDTO.getContenedor_id())
+                .orElseThrow(() -> new RuntimeException("Contenedor no encontrado"));
+
+        List<LocalizacionContenedores> localizacionesGuardadas = new ArrayList<>();
+
+        for (Long clasificacionId : localizacionDTO.getClasificacion_id()) {
+            Clasificaciones clasificacion = clasificacionesRepository.findById(clasificacionId)
+                    .orElseThrow(() -> new RuntimeException("Clasificación no encontrada"));
+
+            LocalizacionContenedores localizacion = new LocalizacionContenedores();
+            localizacion.setContenedores(contenedor);
+            localizacion.setClasificaciones(clasificacion);
+
+            localizacionesGuardadas.add(localizacionContenedoresRepository.save(localizacion));
+        }
+
+        return localizacionesGuardadas;
     }
 
 

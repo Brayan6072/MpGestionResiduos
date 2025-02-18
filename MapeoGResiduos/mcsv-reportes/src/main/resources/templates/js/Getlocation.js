@@ -35,3 +35,23 @@ map.on('click', function(e) {
     
 
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+        const form = document.getElementById('contenedorForm');
+        const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+        const selectedValues = [];
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    selectedValues.push(event.target.value);
+                } else {
+                    const index = selectedValues.indexOf(event.target.value);
+                    if (index > -1) {
+                        selectedValues.splice(index, 1);
+                    }
+                }
+                console.log(selectedValues);
+            });
+        });
+    });
