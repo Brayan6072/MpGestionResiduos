@@ -25,5 +25,7 @@ public interface ReportesClient {
 
     @GetMapping("/CountLastMonth")
     List<Object[]> CountLastMonth();
+
+
 }
 

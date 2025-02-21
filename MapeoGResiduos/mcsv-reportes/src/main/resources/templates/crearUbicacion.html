@@ -1,32 +1,78 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Localización</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="/css/formdatacontainer.css">
+
+    <title>Mapeo Gestion de Residuos</title>
 </head>
 <body>
-<h1>Agregar Localización</h1>
-<form th:action="@{http://localhost:8099/contenedores/ubicaciones/addC}" th:object="${localizacionDTO}" method="POST">
+<div id="map" style="height: 500px;"></div>
+<form th:action="@{http://localhost:8099/contenedores/ubicaciones/addContenedores}" method="POST" class="formcontainer" id="contenedorForm">
+
     <div>
-        <label for="contenedor_id">ID del Contenedor:</label>
-        <input type="number" id="contenedor_id" name="contenedor_id" th:field="*{contenedor_id}" required>
+        <label for="nombre">Contenedor:</label>
+        <input type="text" name="nombre" id="nombre" th:field="*{contenedor.nombre}" placeholder="Asigna una letra unica">
+        <label for="longitud">Longitud:</label>
+        <input type="text" name="longitud" id="longitud" th:field="*{contenedor.longitud}">
+        <label for="latitud">Latitud:</label>
+        <input type="text" name="latitud" id="latitud" th:field="*{contenedor.latitud}">
+        <input type="text" name="clasificacion" id="selectclass" hidden>
+
     </div>
+
+
+    <div class="bottom-gallery">
+        <div class="image-container">
+
+            <img src="/Images/contenedores/organicos.png" alt="Placeholder image 1">
+            <input type="checkbox" name="organicos" class="clasificacion" value="5">
+        </div>
+        <div class="image-container">
+            <img src="/Images/contenedores/Papel.png" alt="Placeholder image 2">
+            <input type="checkbox" name="papel" class="clasificacion" value="1">
+        </div>
+        <div class="image-container">
+            <img src="/Images/contenedores/Dificil Reciclaje.png" alt="Placeholder image 3">
+            <input type="checkbox" name="dificil_reciclaje" class="clasificacion" value="3">
+        </div>
+        <div class="image-container">
+            <img src="/Images/contenedores/Plasticos.png" alt="Placeholder image 4">
+            <input type="checkbox" name="plasticos" class="clasificacion"  value="6">
+        </div>
+        <div class="image-container">
+            <img src="/Images/contenedores/Vidrio.png" alt="Placeholder image 3">
+            <input type="checkbox" name="vidrio" class="clasificacion" value="2">
+        </div>
+        <div class="image-container">
+            <img src="/Images/contenedores/Metal.png" alt="Placeholder image 4">
+            <input type="checkbox" name="metal" class="clasificacion" value="4">
+        </div>
+    </div>
+
     <div>
         <label>IDs de Clasificación:</label>
         <div id="clasificacion-container">
             <!-- Iterar sobre la lista y generar campos dinámicamente -->
-            <div th:each="clasificacion, iterStat : *{clasificacion_id}">
-                <input type="number" th:field="*{clasificacion_id[__${iterStat.index}__]}" th:placeholder="'Clasificación ' + (${iterStat.index} + 1)">
+            <div th:each="clasificacion, iterStat : *{localizacionDTO.clasificacion_id}">
+                <input type="number" th:field="*{localizacionDTO.clasificacion_id[__${iterStat.index}__]}" th:placeholder="'Clasificación ' + (${iterStat.index} + 1)">
                 <button type="button" onclick="eliminarCampo(this)">Eliminar</button>
             </div>
         </div>
         <button type="button" onclick="agregarCampo()">Agregar Clasificación</button>
     </div>
-    <button type="submit">Enviar</button>
+
+    <button type="submit" class="submit-btn">Reportar</button>
+
 </form>
 
+
+
+<script src="/js/Getlocation.js"></script>
 <script>
     // Función para agregar un nuevo campo de clasificación
     function agregarCampo() {
@@ -49,3 +95,4 @@
 </script>
 </body>
 </html>
+

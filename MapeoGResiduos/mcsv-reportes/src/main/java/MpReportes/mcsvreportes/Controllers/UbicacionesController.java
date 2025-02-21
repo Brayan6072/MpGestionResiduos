@@ -66,22 +66,52 @@ public class UbicacionesController {
         return ResponseEntity.ok(ubicacionService.addLocation(localizacionDTO));
     }
 
-    @PostMapping("/addC")
-    public String agregarLocalizacion(@ModelAttribute LocalizacionDTO localizacionDTO, Model model) {
+    @PostMapping("/addContenedores")
+    public String agregarLocalizacion(@ModelAttribute("localizacionDTO") LocalizacionDTO localizacionDTO, Model localizaciones, @ModelAttribute("contedor") Contenedores contenedores) {
+
+        contenedorService.createContainer(contenedores);
+
+        Long id = contenedorService.findIdByNombre(contenedores.getNombre());
+        localizacionDTO.setContenedor_id(id);
 
         List<LocalizacionContenedores> localizacionesGuardadas = ubicacionService.addLocation(localizacionDTO);
 
-        model.addAttribute("localizaciones", localizacionesGuardadas);
+        localizaciones.addAttribute("localizaciones", localizacionesGuardadas);
         return "mapa";
     }
 
     @GetMapping("/form")
-    public String mostrarFormulario(Model model) {
+    public String mostrarFormulario(Model localizacion, Model contenedor, Contenedores contenedores) {
+
+        contenedor.addAttribute("contenedor", contenedores);
         LocalizacionDTO localizacionDTO = new LocalizacionDTO();
-        localizacionDTO.setClasificacion_id(new ArrayList<>()); // Lista vacía
-        model.addAttribute("localizacionDTO", localizacionDTO);
+        localizacionDTO.setClasificacion_id(new ArrayList<>());
+        localizacion.addAttribute("localizacionDTO", localizacionDTO);
+
         return "crearUbicacion";
     }
+
+//    @GetMapping("/form")
+//    public String mostrarFormulario(Model model, Model contenedor, Long id, Contenedores contenedores) {
+//
+//
+//        contenedor.addAttribute("contenedores", contenedores);
+//
+//        id = contenedorService.findIdByNombre(contenedores.getNombre());
+//
+//        LocalizacionDTO localizacionDTO = new LocalizacionDTO();
+//        localizacionDTO.setContenedor_id(id);
+//        localizacionDTO.setClasificacion_id(new ArrayList<>());
+//
+//        model.addAttribute("localizacionDTO", localizacionDTO);
+//        List<LocalizacionContenedores> localizacionesGuardadas = ubicacionService.addLocation(localizacionDTO);
+//
+//
+//        return "mapa";
+//    }
+
+
+
 //    @PostMapping("/add")
 //    public String addContenedor(@ModelAttribute("location") LocalizacionDTO localizacionDTO){
 //        ubicacionService.findClasificacionesByContenedorNombre("Contenedor X");
