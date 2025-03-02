@@ -42,7 +42,7 @@ spring:
 feign:
   client:
     mcsv-reportes:
-      url: ${FOREIGN_CLIENT_URL:http://localhost:8099/reportes}
+      url: ${FOREIGN_CLIENT_URL:http://localhost:8099}
 
 
 eureka:

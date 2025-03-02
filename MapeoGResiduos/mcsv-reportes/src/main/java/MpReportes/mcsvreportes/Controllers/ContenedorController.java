@@ -28,6 +28,4 @@ public class ContenedorController {
         return ResponseEntity.ok(contenedorService.findIdByNombre(nombreContenedor));
     }
 
-
-
 }

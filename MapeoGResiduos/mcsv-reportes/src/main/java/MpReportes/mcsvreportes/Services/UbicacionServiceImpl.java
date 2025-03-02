@@ -8,6 +8,7 @@ import MpReportes.mcsvreportes.Entities.LocalizacionContenedores;
 import MpReportes.mcsvreportes.persistence.ClasificacionesRepository;
 import MpReportes.mcsvreportes.persistence.LocalizacionContenedoresRepository;
 import MpReportes.mcsvreportes.persistence.ContenedoresRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -63,6 +64,11 @@ public class UbicacionServiceImpl implements UbicacionService{
         }
 
         return localizacionesGuardadas;
+    }
+    @Transactional
+    @Override
+    public int deleteByContenedor_id(int contenedor_id) {
+        return localizacionContenedoresRepository.deleteByContenedor_id(contenedor_id);
     }
 
 

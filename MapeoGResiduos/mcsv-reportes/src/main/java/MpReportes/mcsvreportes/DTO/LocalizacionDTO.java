@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -18,7 +19,7 @@ public class LocalizacionDTO {
 
     private Long id;
     private Long contenedor_id;
-    private List<Long> clasificacion_id;
+    private List<Long> clasificacion_id = new ArrayList<>();
 }
 
 

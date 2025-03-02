@@ -3,6 +3,7 @@ package MpReportes.mcsvreportes.Services;
 import MpReportes.mcsvreportes.Entities.Contenedores;
 import MpReportes.mcsvreportes.Entities.LocalizacionContenedores;
 import MpReportes.mcsvreportes.persistence.ContenedoresRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,12 @@ public class ContenedorServiceImpl implements ContenedorService{
     @Override
     public Long findIdByNombre(String nombreContenedor) {
         return contenedoresRepository.findIdByNombre(nombreContenedor);
+    }
+
+    @Transactional
+    @Override
+    public int deleteById(int id) {
+        return contenedoresRepository.deleteById(id);
     }
 
 

@@ -59,6 +59,9 @@
                             <ul class="collapse">
                                 <li><a href="/api/v1/search-registro/{estatus}">Registros</a></li>
                             </ul>
+                            <ul class="collapse">
+                                <li><a href="/api/v1/form">Agregar Ubicaciones</a></li>
+                            </ul>
                         </li>
 
                     </ul>
@@ -142,7 +145,7 @@
                         <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Usuario <i class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
 
-                            <a class="dropdown-item" href="/api/v1/Signout">Log Out</a>
+                            <a class="dropdown-item" onclick="token();" href="/api/v1/Signout">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -215,6 +218,10 @@
 <script th:inline="javascript">
     const reportesmes = /*[[${reportesmes}]]*/ [];
     const reportessemanal = /*[[${reportessemanal}]]*/ [];
+
+    function token() {
+        localStorage.removeItem("token");
+    }
 </script>
 <script src="/assets/js/GraficosHistorial.js"></script>
 <script src="/assets/js/GraficosMes.js"></script>

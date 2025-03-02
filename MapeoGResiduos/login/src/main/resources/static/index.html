@@ -10,15 +10,15 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up">
-        <form id="registerForm" method="post" th:object="${user}" th:action="@{/api/v1/register}">
+        <form id="registerForm" method="post" th:object="${register}" th:action="@{/api/v1/register}">
 
             <h1>Crear Cuenta</h1>
 
-            <input name="name" type="text" placeholder="Nombre" required>
-            <input name="username" type="email" placeholder="Correo electrónico" required>
-            <input name="lastname" type="text" placeholder="Apellido" required>
-            <input name="phone" type="text" placeholder="Teléfono" required>
-            <input name="password" type="password" placeholder="Contraseña" required>
+            <input name="name" th:field="*{name}" type="text" placeholder="Nombre" required>
+            <input name="username" th:field="*{username}" type="email" placeholder="Correo electrónico" required>
+            <input name="lastname" th:field="*{lastname}" type="text" placeholder="Apellido" required>
+            <input name="phone" th:field="*{phone}" type="text" placeholder="Teléfono" required>
+            <input name="password" th:field="*{password}" type="password" placeholder="Contraseña" required>
 
             <button type="submit" title="Ingresar">Crear</button>
         </form>
@@ -27,10 +27,10 @@
 
 
     <div class="form-container sign-in">
-        <form id="loginForm" method="post" th:action="@{/api/v1/login}">
+        <form id="loginForm" method="post" th:object="${request}" th:action="@{/api/v1/login}">
             <h1>Iniciar Sesion</h1>
-            <input name="username" type="email" placeholder="username" required>
-            <input name="password" type="password" placeholder="password" required>
+            <input name="username" type="email" th:field="*{username}" placeholder="username" required>
+            <input name="password" type="password" th:field="*{password}" placeholder="password" required>
             <a href="#">¿Olvidó su contraseña?</a>
             <button type="submit">Iniciar</button>
         </form>

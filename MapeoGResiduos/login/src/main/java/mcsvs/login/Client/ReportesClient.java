@@ -1,12 +1,11 @@
 package mcsvs.login.Client;
 
+import mcsvs.login.DTO.ContenedoresDTO;
+import mcsvs.login.DTO.LocalizacionDTO;
 import mcsvs.login.DTO.ReportesDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,18 +13,26 @@ import java.util.List;
 
 public interface ReportesClient {
 
-    @GetMapping("/search-estatus/{estatus}")
+    @GetMapping("/reportes/search-estatus/{estatus}")
     List<ReportesDTO> findByEstatus(@PathVariable String estatus);
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/reportes/update/{id}")
     ReportesDTO updateEstatus(@PathVariable Long id);
 
-    @GetMapping("/CountLastWeek")
+    @GetMapping("/reportes/CountLastWeek")
     List<Object[]> CountLastWeek();
 
-    @GetMapping("/CountLastMonth")
+    @GetMapping("/reportes/CountLastMonth")
     List<Object[]> CountLastMonth();
 
+    @PostMapping("/contenedores/create")
+    ResponseEntity<?> createContenedor(ContenedoresDTO contenedores);
 
-}
+    @GetMapping("/contenedores/get/{nombreContenedor}")
+    Long findIdByNombre(@PathVariable String nombreContenedor);
+
+    @PostMapping("/contenedores/ubicaciones/add")
+    ResponseEntity<?> addContenedor(LocalizacionDTO localizacionDTO);
+
+    }
 

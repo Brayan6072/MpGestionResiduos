@@ -39,4 +39,8 @@ public interface LocalizacionContenedoresRepository extends JpaRepository<Locali
             "    c.id, c.nombre, c.latitud, c.longitud;", nativeQuery = true)
     List<Object[]> getContenedoresConClasificaciones();
 
+    @Modifying
+    @Query(value = "DELETE FROM localizacion_contenedores WHERE contenedor_id = :contenedor_id", nativeQuery = true)
+    int deleteByContenedor_id(@Param("contenedor_id") int contenedor_id);
+
 }

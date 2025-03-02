@@ -1,9 +1,6 @@
 package MpReportes.mcsvreportes.Controllers;
 
-import MpReportes.mcsvreportes.DTO.ContenedoresDTO;
 import MpReportes.mcsvreportes.DTO.LocalizacionDTO;
-import MpReportes.mcsvreportes.Entities.Clasificaciones;
-import MpReportes.mcsvreportes.Entities.Contenedores;
 import MpReportes.mcsvreportes.Entities.LocalizacionContenedores;
 import MpReportes.mcsvreportes.Entities.Reportes;
 import MpReportes.mcsvreportes.Services.ContenedorServiceImpl;
@@ -13,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -28,11 +23,6 @@ public class UbicacionesController {
         this.ubicacionService = ubicacionService;
         this.contenedorService = contenedorService;
 
-    }
-
-    @GetMapping("/clasificaciones/{contenedornombre}")
-    public ResponseEntity<?> clasificaciones(@PathVariable String contenedornombre){
-        return ResponseEntity.ok(ubicacionService.findClasificacionesByContenedorNombre(contenedornombre));
     }
 
     @GetMapping("/clasificaciones")
@@ -55,6 +45,11 @@ public class UbicacionesController {
         return "reporte";
     }
 
+    @GetMapping("/clasificaciones/{contenedornombre}")
+    public ResponseEntity<?> clasificaciones(@PathVariable String contenedornombre){
+        return ResponseEntity.ok(ubicacionService.findClasificacionesByContenedorNombre(contenedornombre));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> createLocalizacion(@RequestBody LocalizacionContenedores localizacionContenedores){
         return ResponseEntity.ok(ubicacionService.createLocalizacion(localizacionContenedores));
@@ -66,58 +61,12 @@ public class UbicacionesController {
         return ResponseEntity.ok(ubicacionService.addLocation(localizacionDTO));
     }
 
-    @PostMapping("/addContenedores")
-    public String agregarLocalizacion(@ModelAttribute("localizacionDTO") LocalizacionDTO localizacionDTO, Model localizaciones, @ModelAttribute("contedor") Contenedores contenedores) {
+    @PostMapping("/deleteUbicacion/{contenedor_id}")
+    public  ResponseEntity<?> deleteUbicacion(@PathVariable int contenedor_id){
+        ubicacionService.deleteByContenedor_id(contenedor_id);
+        return ResponseEntity.ok(contenedorService.deleteById(contenedor_id));
 
-        contenedorService.createContainer(contenedores);
-
-        Long id = contenedorService.findIdByNombre(contenedores.getNombre());
-        localizacionDTO.setContenedor_id(id);
-
-        List<LocalizacionContenedores> localizacionesGuardadas = ubicacionService.addLocation(localizacionDTO);
-
-        localizaciones.addAttribute("localizaciones", localizacionesGuardadas);
-        return "mapa";
     }
-
-    @GetMapping("/form")
-    public String mostrarFormulario(Model localizacion, Model contenedor, Contenedores contenedores) {
-
-        contenedor.addAttribute("contenedor", contenedores);
-        LocalizacionDTO localizacionDTO = new LocalizacionDTO();
-        localizacionDTO.setClasificacion_id(new ArrayList<>());
-        localizacion.addAttribute("localizacionDTO", localizacionDTO);
-
-        return "crearUbicacion";
-    }
-
-//    @GetMapping("/form")
-//    public String mostrarFormulario(Model model, Model contenedor, Long id, Contenedores contenedores) {
-//
-//
-//        contenedor.addAttribute("contenedores", contenedores);
-//
-//        id = contenedorService.findIdByNombre(contenedores.getNombre());
-//
-//        LocalizacionDTO localizacionDTO = new LocalizacionDTO();
-//        localizacionDTO.setContenedor_id(id);
-//        localizacionDTO.setClasificacion_id(new ArrayList<>());
-//
-//        model.addAttribute("localizacionDTO", localizacionDTO);
-//        List<LocalizacionContenedores> localizacionesGuardadas = ubicacionService.addLocation(localizacionDTO);
-//
-//
-//        return "mapa";
-//    }
-
-
-
-//    @PostMapping("/add")
-//    public String addContenedor(@ModelAttribute("location") LocalizacionDTO localizacionDTO){
-//        ubicacionService.findClasificacionesByContenedorNombre("Contenedor X");
-//        ubicacionService.addLocation(localizacionDTO);
-//        return "mapa";
-//    }
 
 
     /*
