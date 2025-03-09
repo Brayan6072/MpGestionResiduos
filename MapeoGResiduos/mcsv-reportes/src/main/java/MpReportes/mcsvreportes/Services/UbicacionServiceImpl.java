@@ -65,6 +65,7 @@ public class UbicacionServiceImpl implements UbicacionService{
 
         return localizacionesGuardadas;
     }
+
     @Transactional
     @Override
     public int deleteByContenedor_id(int contenedor_id) {

@@ -62,7 +62,7 @@ public class UbicacionesController {
     }
 
     @PostMapping("/deleteUbicacion/{contenedor_id}")
-    public  ResponseEntity<?> deleteUbicacion(@PathVariable int contenedor_id){
+    public ResponseEntity<?> deleteUbicacion(@PathVariable int contenedor_id){
         ubicacionService.deleteByContenedor_id(contenedor_id);
         return ResponseEntity.ok(contenedorService.deleteById(contenedor_id));
 

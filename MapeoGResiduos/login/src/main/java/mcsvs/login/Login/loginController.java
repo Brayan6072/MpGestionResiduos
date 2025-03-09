@@ -11,6 +11,8 @@ import mcsvs.login.DTO.LocalizacionDTO;
 import mcsvs.login.DTO.ReportesDTO;
 import mcsvs.login.User.UserRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -53,14 +55,23 @@ public class loginController {
         return reportesweek;
     }
     @PostMapping(value = "/login")
-    public String login(LoginRequest request, Model model, Model login, String estatus, Model modelm, Model models){
+    public String login(LoginRequest request, Model model, Model login, String estatus, Model modelm, Model models) {
+        // Verificar si el usuario está autenticado
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            // El usuario está autenticado
+            System.out.println("Usuario autenticado: " + authentication.getName());
+        } else {
+            // El usuario no está autenticado
+            System.out.println("Usuario no autenticado");
+        }
 
-        login.addAttribute("login",request);
+        login.addAttribute("login", request);
 
         AuthResponse activo = authService.login(request);
         System.out.println(activo);
 
-        if(activo != null){
+        if (activo != null) {
             estatus = "Rojo";
 
             List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);
@@ -73,10 +84,9 @@ public class loginController {
             models.addAttribute("reportessemanal", reportesweek);
 
             return "historial";
-        }else{
+        } else {
             return "index";
         }
-
     }
 
     @GetMapping("/inicio")
@@ -201,4 +211,12 @@ public class loginController {
 
         return "crearUbicacion";
     }
+
+    @PostMapping("/delete")
+    public String delete(Model model, @RequestParam int contenedor_id) {
+        model.addAttribute("contenedor_id", contenedor_id);
+        reportesClient.deleteUbicacion(contenedor_id);
+        return "historial";
+    }
+
 }

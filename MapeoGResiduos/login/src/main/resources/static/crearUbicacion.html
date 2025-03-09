@@ -69,8 +69,10 @@
     <button type="submit" class="submit-btn">Reportar</button>
 
 </form>
-
-
+<form th:action="@{/api/v1/delete}" method="post">
+    <input type="text" name="contenedor_id" id="contenedor_id" placeholder="Asigna una letra unica">
+    <button type="submit" class="submit-btn">Eliminar</button>
+</form>
 
 <script src="/js/Getlocation.js"></script>
 <script>
