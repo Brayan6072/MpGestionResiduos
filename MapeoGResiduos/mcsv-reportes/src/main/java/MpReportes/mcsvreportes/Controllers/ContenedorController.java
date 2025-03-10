@@ -27,5 +27,9 @@ public class ContenedorController {
     public ResponseEntity<?> findIdByNombre(@PathVariable String nombreContenedor){
         return ResponseEntity.ok(contenedorService.findIdByNombre(nombreContenedor));
     }
+    @GetMapping("/findContainers")
+    public ResponseEntity<?> findContainers(){
+        return ResponseEntity.ok(contenedorService.findContenedores());
+    }
 
 }

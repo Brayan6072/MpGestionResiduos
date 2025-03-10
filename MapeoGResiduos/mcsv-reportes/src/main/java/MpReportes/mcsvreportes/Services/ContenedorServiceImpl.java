@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ContenedorServiceImpl implements ContenedorService{
 
@@ -27,6 +29,11 @@ public class ContenedorServiceImpl implements ContenedorService{
     @Override
     public int deleteById(int id) {
         return contenedoresRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Contenedores> findContenedores() {
+        return contenedoresRepository.findAll();
     }
 
 
