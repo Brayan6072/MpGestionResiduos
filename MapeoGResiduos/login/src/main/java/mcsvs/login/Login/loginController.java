@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @Controller
-@RequiredArgsConstructor
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class loginController {
     private final ReportesClient reportesClient;
     private final AuthService authService;
@@ -55,23 +55,25 @@ public class loginController {
         return reportesweek;
     }
     @PostMapping(value = "/login")
-    public String login(LoginRequest request, Model model, Model login, String estatus, Model modelm, Model models) {
-        // Verificar si el usuario está autenticado
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            // El usuario está autenticado
-            System.out.println("Usuario autenticado: " + authentication.getName());
-        } else {
-            // El usuario no está autenticado
-            System.out.println("Usuario no autenticado");
-        }
+    public String login(LoginRequest request, Model model, Model login,String estatus, Model modelm, Model models) {
 
         login.addAttribute("login", request);
 
         AuthResponse activo = authService.login(request);
         System.out.println(activo);
 
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+
+            System.out.println("Usuario autenticado: " + authentication.getName());
+        } else {
+
+            System.out.println("Usuario no autenticado");
+        }
+
         if (activo != null) {
+
             estatus = "Rojo";
 
             List<ReportesDTO> reportesList = reportesClient.findByEstatus(estatus);

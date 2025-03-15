@@ -55,7 +55,22 @@ var img_textiles='Images/contenedores/Textiles.png';
 
 /*-------- */
 
+var btnsp = document.getElementById("btn-sign-up");
 
+btnsignup.addEventListener("click", function(){
+    window.location.href = "http://localhost:9090/login/index";
+});
+
+
+var btngame = document.getElementById("gamecontroller");
+
+btngame.addEventListener("click", function(){
+    window.location.href = "http://localhost:9990/mapa";
+});
+
+
+document.querySelectorAll(".classification label input")[0].checked=true
+document.getElementById("state_lleno").checked=true
 
 
 

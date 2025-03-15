@@ -27,8 +27,8 @@
         </div>
         <div class="controllers">
 
-            <ion-icon name="game-controller"></ion-icon>
-            <a href="http://localhost:9090/login/index"><button id="btn-sign-up">SIGN UP</button></a>
+            <ion-icon id="gamecontroller" name="game-controller"></ion-icon>
+            <button id="btn-sign-up">SIGN UP</button>
             <ion-icon id="btn-menu" name="menu"></ion-icon>
 
         </div>
@@ -42,37 +42,43 @@
 
             <h1 class="etiqueta"></h1>
             <input id="etiqueta" type="hidden" th:field="*{etiquetau}">
+
             <section class="classification">
                 <h2>Clasificación</h2>
+
                 <div class="classification-grid">
+
                     <div class="classification" th:each="contenedor : ${contenedores}">
-                        <img class="classification-btn"
-                             th:src="@{/images/contenedores/{img}(img=${contenedor[0] + '.png'})}"
-                             th:alt="${'Imagen de ' + contenedor[0]}" />
-                        <input class="contenedor_cls" type="radio" name="clasificacion" th:value="${contenedor[0]}" th:field="*{clasificacion}">
+                        <label th:for="${contenedor[0]}" th:class="${contenedor[0]}">
+                            <input th:id="${contenedor[0]}" type="radio" name="clasificacion" th:value="${contenedor[0]}" th:field="*{clasificacion}">
+                            <img class="classification-btn"  th:src="@{/images/contenedores/{img}(img=${contenedor[0] + '.png'})}" th:alt="${'Imagen de ' + contenedor[0]}" />
+
+
+                        </label>
                     </div>
                 </div>
             </section>
 
-            <section class="container-state">
+            <section class="state_radio">
+
                 <h2>Estado del Contenedor</h2>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input class="rd_btn" type="radio" name="estado" value="Lleno"  th:field="*{estado}">
-                        <span class="radio-custom"></span>
-                        Lleno
-                    </label>
-                    <label class="radio-label">
-                        <input class="rd_btn" type="radio" name="estado" value="Dañado" th:field="*{estado}">
-                        <span class="radio-custom"></span>
-                        Dañado
-                    </label>
-                    <label class="radio-label">
-                        <input class="rd_btn" type="radio" name="estado" value="Basura Mezclada" th:field="*{estado}">
-                        <span class="radio-custom"></span>
-                        Basura Mezclada
-                    </label>
-                </div>
+                <input type="radio" name="estado" id="state_lleno" value="Lleno" th:field="*{estado}">
+                <input type="radio" name="estado" id="state_danado" value="Dañado" th:field="*{estado}">
+                <input type="radio" name="estado" id="state_mezclada" value="Basura Mezclada" th:field="*{estado}">
+
+                <label for="state_lleno" class="state_lleno">
+                    <div class="dot"></div>
+                    <span>Lleno</span>
+                </label>
+                <label for="state_danado" class="state_danado">
+                    <div class="dot"></div>
+                    <span>Dañado</span>
+                </label>
+                <label for="state_mezclada" class="state_mezclada">
+                    <div class="dot"></div>
+                    <span>Basura Mezclada</span>
+                </label>
+
             </section>
 
             <button type="submit" class="submit-btn">Reportar</button>

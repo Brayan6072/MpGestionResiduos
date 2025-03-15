@@ -165,15 +165,3 @@ function getimg(residuos) {
     }
 }
 
-var btnsp = document.getElementById("btn-sign-up");
-
-btnsignup.addEventListener("click", function(){
-    window.location.href = "http://localhost:9090/login/index";
-});
-
-
-var btngame = document.getElementById("gamecontroller");
-
-btngame.addEventListener("click", function(){
-    window.location.href = "http://localhost:9990/mapa";
-});
