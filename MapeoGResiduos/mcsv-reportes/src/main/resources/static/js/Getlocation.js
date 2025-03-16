@@ -56,3 +56,37 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 });
+
+function agregarCampo() {
+        const container = document.getElementById("clasificacion-container");
+        const index = container.children.length; // Obtener el número actual de campos
+        const nuevoCampo = `
+            <div>
+                <input type="number" name="clasificacion_id[${index}]" placeholder="Clasificación ${index + 1}">
+                <button type="button" onclick="eliminarCampo(this)">Eliminar</button>
+            </div>
+        `;
+        container.insertAdjacentHTML("beforeend", nuevoCampo);
+    }
+
+
+    function eliminarCampo(boton) {
+        const campo = boton.parentElement;
+        campo.remove();
+    }
+
+    function ShowAddSection(){
+        const AddSection = document.getElementById("AddSection");
+        const hidden = AddSection.getAttribute("hidden");
+        const RemoveSection = document.getElementById("RemoveSection");
+        const hiddenRemove = RemoveSection.getAttribute("hidden");
+
+        if(hidden){
+            AddSection.removeAttribute("hidden");
+            RemoveSection.setAttribute("hidden", true);
+        }else{
+            AddSection.setAttribute("hidden", true);
+            RemoveSection.removeAttribute("hidden");
+        }
+
+    }

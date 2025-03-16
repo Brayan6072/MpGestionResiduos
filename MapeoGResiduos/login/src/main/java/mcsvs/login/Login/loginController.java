@@ -55,11 +55,12 @@ public class loginController {
         return reportesweek;
     }
     @PostMapping(value = "/login")
-    public String login(LoginRequest request, Model model, Model login,String estatus, Model modelm, Model models) {
+    public String login(LoginRequest request, Model model,Model tokenactivo, Model login,String estatus, Model modelm, Model models) {
 
         login.addAttribute("login", request);
 
         AuthResponse activo = authService.login(request);
+        tokenactivo.addAttribute("token", activo);
         System.out.println(activo);
 
 
@@ -193,7 +194,7 @@ public class loginController {
 
 
     @PostMapping("/addContenedores")
-    public String agregarLocalizacion(@ModelAttribute("contenedores") ContenedoresDTO contenedores, @ModelAttribute("localizacionDTO") LocalizacionDTO localizacionDTO){
+    public String agregarLocalizacion(@ModelAttribute("contenedores") ContenedoresDTO contenedores, @ModelAttribute("localizacionDTO") LocalizacionDTO localizacionDTO,Model tokenactivo){
 
         reportesClient.createContenedor(contenedores);
         System.out.println(contenedores);
@@ -209,13 +210,13 @@ public class loginController {
     }
 
     @GetMapping("/form")
-    public String mostrarFormulario(@ModelAttribute("contenedores") ContenedoresDTO contenedores, @ModelAttribute("localizacionDTO") LocalizacionDTO localizacionDTO) {
+    public String mostrarFormulario(@ModelAttribute("contenedores") ContenedoresDTO contenedores, @ModelAttribute("localizacionDTO") LocalizacionDTO localizacionDTO, Model tokenactivo) {
 
         return "crearUbicacion";
     }
 
     @PostMapping("/delete")
-    public String delete(Model model, @RequestParam int contenedor_id) {
+    public String delete(Model model, @RequestParam int contenedor_id,Model tokenactivo) {
         model.addAttribute("contenedor_id", contenedor_id);
         reportesClient.deleteUbicacion(contenedor_id);
         return "historial";

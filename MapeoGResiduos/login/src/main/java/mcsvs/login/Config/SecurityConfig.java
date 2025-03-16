@@ -32,7 +32,7 @@ public class SecurityConfig {
                authRequest
                        .requestMatchers(HttpMethod.GET).permitAll()
                        .requestMatchers(HttpMethod.OPTIONS).permitAll()
-                       .requestMatchers("/auth/**", "/login/index/**","/api/v1/addContenedores","/api/v1/delete", "/api/v1/login","/api/v1/css/**", "/css/**", "/js/**", "/api/v1/js/**", "/api/v1/form").permitAll()
+                       .requestMatchers("/auth/**", "/login/index/**", "/api/v1/login","/api/v1/css/**", "/css/**", "/js/**", "/api/v1/js/**").permitAll()
                    .anyRequest().authenticated()
 
                     )

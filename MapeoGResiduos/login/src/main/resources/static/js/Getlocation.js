@@ -36,12 +36,12 @@ map.on('click', function(e) {
 
 });
 
+const contenedor_id = document.getElementById("selectclass");
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.getElementById('contenedorForm');
     const checkboxes = form.querySelectorAll('input[type="checkbox"]');
     const selectedValues = [];
-    const selectclass = document.getElementById('selectclass');
 
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', (event) => {
@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     selectedValues.splice(index, 1);
                 }
             }
+            contenedor_id.value = selectedValues
             console.log(selectedValues);
-            selectclass.textContent = selectedValues;
         });
     });
 });

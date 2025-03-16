@@ -23,49 +23,38 @@
             <input type="text" name="longitud" id="longitud" th:field="*{contenedores.longitud}">
             <label for="latitud">Latitud:</label>
             <input type="text" name="latitud" id="latitud" th:field="*{contenedores.latitud}">
-            <input type="text" name="clasificacion" id="selectclass" hidden>
+            <input type="text" name="clasificacion" id="selectclass" th:field="*{localizacionDTO.clasificacion_id}">
+
 
         </div>
 
 
         <div class="bottom-gallery">
-            <div class="image-container">
+            <label class="image-container">
 
                 <img src="/Images/contenedores/organicos.png" alt="Placeholder image 1">
-                <input type="checkbox" name="organicos" class="clasificacion" value="5">
-            </div>
-            <div class="image-container">
+                <input type="checkbox" name="organicos" class="clasificacion" id="organicos" value="5">
+            </label>
+            <label class="image-container">
                 <img src="/Images/contenedores/Papel.png" alt="Placeholder image 2">
-                <input type="checkbox" name="papel" class="clasificacion" value="1">
-            </div>
-            <div class="image-container">
+                <input type="checkbox" name="papel" class="clasificacion" id="papel" value="1">
+            </label>
+            <label class="image-container">
                 <img src="/Images/contenedores/Dificil Reciclaje.png" alt="Placeholder image 3">
-                <input type="checkbox" name="dificil_reciclaje" class="clasificacion" value="3">
-            </div>
-            <div class="image-container">
+                <input type="checkbox" name="dificil_reciclaje" class="clasificacion" id="Dificil Reciclaje" value="3">
+            </label>
+            <label class="image-container">
                 <img src="/Images/contenedores/Plasticos.png" alt="Placeholder image 4">
-                <input type="checkbox" name="plasticos" class="clasificacion"  value="6">
-            </div>
-            <div class="image-container">
+                <input type="checkbox" name="plasticos" class="clasificacion" id="plasticos" value="6">
+            </label>
+            <label class="image-container">
                 <img src="/Images/contenedores/Vidrio.png" alt="Placeholder image 3">
-                <input type="checkbox" name="vidrio" class="clasificacion" value="2">
-            </div>
-            <div class="image-container">
+                <input type="checkbox" name="vidrio" class="clasificacion" id="vidrio" value="2">
+            </label>
+            <label class="image-container">
                 <img src="/Images/contenedores/Metal.png" alt="Placeholder image 4">
-                <input type="checkbox" name="metal" class="clasificacion" value="4">
-            </div>
-        </div>
-
-        <div>
-            <label>IDs de Clasificación:</label>
-            <div id="clasificacion-container">
-                <!-- Iterar sobre la lista y generar campos dinámicamente -->
-                <div th:each="clasificacion, iterStat : *{localizacionDTO.clasificacion_id}">
-                    <input type="number" th:field="*{localizacionDTO.clasificacion_id[__${iterStat.index}__]}" th:placeholder="'Clasificación ' + (${iterStat.index} + 1)">
-                    <button type="button" onclick="eliminarCampo(this)">Eliminar</button>
-                </div>
-            </div>
-            <button type="button" onclick="agregarCampo()">Agregar Clasificación</button>
+                <input type="checkbox" name="metal" class="clasificacion" id="metal" value="4">
+            </label>
         </div>
 
         <button type="submit" class="submit-btn">Reportar</button>
@@ -84,47 +73,7 @@
     <button type="button" onclick="ShowAddSection();">Add Ubication</button>
     <button type="button" onclick="ShowAddSection();">Remove Ubication</button>
 </section>
-
-
-
 <script src="/js/Getlocation.js"></script>
-<script>
 
-    function agregarCampo() {
-        const container = document.getElementById("clasificacion-container");
-        const index = container.children.length; // Obtener el número actual de campos
-        const nuevoCampo = `
-            <div>
-                <input type="number" name="clasificacion_id[${index}]" placeholder="Clasificación ${index + 1}">
-                <button type="button" onclick="eliminarCampo(this)">Eliminar</button>
-            </div>
-        `;
-        container.insertAdjacentHTML("beforeend", nuevoCampo);
-    }
-
-
-    function eliminarCampo(boton) {
-        const campo = boton.parentElement;
-        campo.remove();
-    }
-
-    function ShowAddSection(){
-        const AddSection = document.getElementById("AddSection");
-        const hidden = AddSection.getAttribute("hidden");
-        const RemoveSection = document.getElementById("RemoveSection");
-        const hiddenRemove = RemoveSection.getAttribute("hidden");
-
-        if(hidden){
-            AddSection.removeAttribute("hidden");
-            RemoveSection.setAttribute("hidden", true);
-        }else{
-            AddSection.setAttribute("hidden", true);
-            RemoveSection.removeAttribute("hidden");
-        }
-
-    }
-
-
-</script>
 </body>
 </html>

@@ -218,7 +218,10 @@
 <script th:inline="javascript">
     const reportesmes = /*[[${reportesmes}]]*/ [];
     const reportessemanal = /*[[${reportessemanal}]]*/ [];
+    const tokenactivo = /*[[${token}]]*/ [];
 
+    sessionStorage.setItem('token', tokenactivo.token);
+    
 </script>
 <script src="/assets/js/GraficosHistorial.js"></script>
 <script src="/assets/js/GraficosMes.js"></script>
