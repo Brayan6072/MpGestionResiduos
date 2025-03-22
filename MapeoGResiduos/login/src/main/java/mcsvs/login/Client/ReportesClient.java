@@ -37,5 +37,8 @@ public interface ReportesClient {
     @PostMapping("/contenedores/ubicaciones/deleteUbicacion/{contenedor_id}")
     ResponseEntity<?> deleteUbicacion(@PathVariable int contenedor_id);
 
+    @GetMapping("/contenedores/findContainers")
+    List<ContenedoresDTO> findContainers();
+
     }
 

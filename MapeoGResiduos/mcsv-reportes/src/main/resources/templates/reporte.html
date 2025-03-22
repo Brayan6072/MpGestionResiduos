@@ -20,7 +20,7 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="http://localhost:8099/contenedores/ubicaciones/mapa" id="home">Home</a></li>
+                <li><a href="/contenedores/ubicaciones/mapa" id="home">Home</a></li>
                 <li><a href="#">Infografias</a></li>
                 <li><a href="#">About us</a></li>
             </ul>
@@ -51,7 +51,7 @@
                     <div class="classification" th:each="contenedor : ${contenedores}">
                         <label th:for="${contenedor[0]}" th:class="${contenedor[0]}">
                             <input th:id="${contenedor[0]}" type="radio" name="clasificacion" th:value="${contenedor[0]}" th:field="*{clasificacion}">
-                            <img class="classification-btn"  th:src="@{/images/contenedores/{img}(img=${contenedor[0] + '.png'})}" th:alt="${'Imagen de ' + contenedor[0]}" />
+                            <img class="classification-btn"  th:src="@{/images/contenedores/{img}(img=${contenedor[0] + '.webp'})}" th:alt="${'Imagen de ' + contenedor[0]}" />
 
 
                         </label>
@@ -100,7 +100,8 @@
     var lb = document.querySelector('#etiqueta');
     lbetiqueta.textContent = etiqueta;
     lb.value = etiqueta;
-
+    document.querySelectorAll(".classification label input")[0].checked=true
+    document.getElementById("state_lleno").checked=true
 
 
 

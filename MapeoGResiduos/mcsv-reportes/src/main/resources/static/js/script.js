@@ -14,7 +14,7 @@ const responsivey = () => {
     }else{
         menu.classList.remove('min');
     }
-      
+
 };
 
 const btnmenu = document.getElementById('btn-menu');
@@ -30,34 +30,17 @@ const responsive = () => {
   }else{
     controllers.appendChild(btnsignup);
     headerContainer.appendChild(menu);
-  } 
+  }
   responsivey();
 }
 
 responsive();
 window.addEventListener('resize', responsive);
 
-
-//rutas de imagenes de cada clasificacion****************************************************
-var img_madera = 'Images/contenedores/madera.png';
-var img_metal = 'Images/contenedores/Metal.png';
-var img_organicos = 'Images/contenedores/organicos.png';
-var img_sanitarios = 'Images/contenedores/sanitarios.png';
-var img_dificil_reclaje ='Images/contenedores/dificil_reciclaje.png';
-var img_papel = 'Images/contenedores/Papel.png';
-var img_vidrio = 'Images/contenedores/Vidrio.png';
-var img_plasticos = 'Images/contenedores/Plasticos.png';
-var img_inorganicos = img_dificil_reclaje;
-var img_construccion = 'Images/contenedores/.png';
-var img_peligrosos='Images/contenedores/Peligrosos.png';
-var img_unicel='Images/contenedores/Unicel.png';
-var img_textiles='Images/contenedores/Textiles.png';
-
-/*-------- */
 var btnsp = document.getElementById("btn-sign-up");
 
 btnsignup.addEventListener("click", function(){
-    window.location.href = "http://localhost:9090/login/index";
+    window.location.href = "https://microservice-login-latest.onrender.com/login/index";
 });
 
 
@@ -67,8 +50,8 @@ btngame.addEventListener("click", function(){
     window.location.href = "http://localhost:9990/mapa";
 });
 
-document.querySelectorAll(".classification label input")[0].checked=true
-document.getElementById("state_lleno").checked=true
+
+
 
 
 

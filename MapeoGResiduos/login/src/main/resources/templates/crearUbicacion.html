@@ -1,79 +1,242 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Maps - srtdash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/formdatacontainer.css">
+    <link rel="shortcut icon" type="image/png" href="/assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="/assets/css/typography.css">
+    <link rel="stylesheet" href="/assets/css/default-css.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <!-- modernizr css -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <link rel="stylesheet" href="/css/formdatacontainer.css">
-
-    <title>Mapeo Gestion de Residuos</title>
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
+
 <body>
-<div id="map" style="height: 500px;"></div>
-<section id="AddSection" hidden>
-
-    <form th:action="@{http://localhost:9090/api/v1/addContenedores}" method="POST" class="formcontainer" id="contenedorForm">
-
-        <div>
-            <label for="nombre">Contenedor:</label>
-            <input type="text" name="nombre" id="nombre" th:field="*{contenedores.nombre}" placeholder="Asigna una letra unica">
-            <label for="longitud">Longitud:</label>
-            <input type="text" name="longitud" id="longitud" th:field="*{contenedores.longitud}">
-            <label for="latitud">Latitud:</label>
-            <input type="text" name="latitud" id="latitud" th:field="*{contenedores.latitud}">
-            <input type="text" name="clasificacion" id="selectclass" th:field="*{localizacionDTO.clasificacion_id}">
-
-
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- preloader area start -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- preloader area end -->
+<!-- page container area start -->
+<div class="page-container">
+    <!-- sidebar menu area start -->
+    <div class="sidebar-menu">
+        <div class="sidebar-header">
+            <div class="logo">
+                <a href="#"><img src="https://tecnologiaintegrada.com.mx/wp-content/uploads/2023/05/cutonala.png" alt="logo"></a>
+            </div>
         </div>
+        <div class="main-menu">
+            <div class="menu-inner">
+                <nav>
+                    <ul class="metismenu" id="menu">
+
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i> <span>Pages</span></a>
+                            <ul class="collapse">
+                                <li><a href="/api/v1/search-registro/Verde">Registros</a></li>
+                            </ul>
+                            <ul class="collapse">
+                                <li><a href="/api/v1/search-estatus/Rojo">Historial</a></li>
+                            </ul>
+                        </li>
 
 
-        <div class="bottom-gallery">
-            <label class="image-container">
-
-                <img src="/Images/contenedores/organicos.png" alt="Placeholder image 1">
-                <input type="checkbox" name="organicos" class="clasificacion" id="organicos" value="5">
-            </label>
-            <label class="image-container">
-                <img src="/Images/contenedores/Papel.png" alt="Placeholder image 2">
-                <input type="checkbox" name="papel" class="clasificacion" id="papel" value="1">
-            </label>
-            <label class="image-container">
-                <img src="/Images/contenedores/Dificil Reciclaje.png" alt="Placeholder image 3">
-                <input type="checkbox" name="dificil_reciclaje" class="clasificacion" id="Dificil Reciclaje" value="3">
-            </label>
-            <label class="image-container">
-                <img src="/Images/contenedores/Plasticos.png" alt="Placeholder image 4">
-                <input type="checkbox" name="plasticos" class="clasificacion" id="plasticos" value="6">
-            </label>
-            <label class="image-container">
-                <img src="/Images/contenedores/Vidrio.png" alt="Placeholder image 3">
-                <input type="checkbox" name="vidrio" class="clasificacion" id="vidrio" value="2">
-            </label>
-            <label class="image-container">
-                <img src="/Images/contenedores/Metal.png" alt="Placeholder image 4">
-                <input type="checkbox" name="metal" class="clasificacion" id="metal" value="4">
-            </label>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        
-        <button type="submit" class="submit-btn">Reportar</button>
+    </div>
+    <!-- sidebar menu area end -->
+    <!-- main content area start -->
+    <div class="main-content">
+        <!-- header area start -->
 
-    </form>
-</section>
+        <!-- header area end -->
+        <div class="header-area">
+            <div class="row align-items-center">
+                <!-- nav and search button -->
+                <div class="col-md-6 col-sm-8 clearfix">
+                    <div class="nav-btn pull-left">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="search-box pull-left">
 
-<section id="RemoveSection" hidden>
-    <form th:action="@{/api/v1/delete}" method="post">
-        <input type="text" name="contenedor_id" id="contenedor_id" placeholder="Asigna una letra unica">
-        <button type="submit" class="submit-btn">Eliminar</button>
-    </form>
-</section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area start -->
+        <div class="page-title-area">
 
-<section id="SelectSection" >
-    <button type="button" onclick="ShowAddSection();">Add Ubication</button>
-    <button type="button" onclick="ShowAddSection();">Remove Ubication</button>
-</section>
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <h4 class="page-title pull-left">Dashboard</h4>
+                        <ul class="breadcrumbs pull-left">
+                            <li><a href="#">Home</a></li>
+                            <li><span>Maps</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- page title area end -->
+        <div class="main-content-inner">
+
+            <div class="col-lg-12 mt-5">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Centro Universitario de Tónala</h4>
+                        <div id="google_map">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <!-- basic form start -->
+                    <div class="card-body">
+                        <section class="col-12 mt-5">
+
+                            <h4 class="header-title">Añadir Ubicación</h4>
+                            <form th:action="@{/api/v1/addContenedores}" method="POST">
+                                <div class="form-group">
+                                    <label for="nombre">Contenedor</label>
+                                    <input type="text" name="nombre" class="form-control" id="nombre" th:field="*{contenedores.nombre}">
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="longitud">Longitud</label>
+                                    <input type="text" name="longitud" class="form-control" id="longitud" th:field="*{contenedores.longitud}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="latitud">Latitud</label>
+                                    <input type="text" name="latitud" class="form-control" id="latitud" th:field="*{contenedores.latitud}">
+
+                                </div>
+                                <div class="form-group"  id="contenedorForm">
+                                    <div id="check-clasification">
+                                        <label class="image-container">
+                                            <img src="/Images/contenedores/Organicos.webp" alt="Placeholder image 1">
+                                            <input type="checkbox" name="organicos" class="clasificacion" id="organicos" value="5">
+                                        </label>
+                                        <label class="image-container">
+                                            <img src="/Images/contenedores/Papel.webp" alt="Placeholder image 2">
+                                            <input type="checkbox" name="papel" class="clasificacion" id="papel" value="1">
+                                        </label>
+                                        <label class="image-container">
+                                            <img src="/Images/contenedores/Dificil Reciclaje.webp" alt="Placeholder image 3">
+                                            <input type="checkbox" name="dificil_reciclaje" class="clasificacion" id="Dificil Reciclaje" value="3">
+                                        </label>
+                                        <label class="image-container">
+                                            <img src="/Images/contenedores/Plasticos.webp" alt="Placeholder image 4">
+                                            <input type="checkbox" name="plasticos" class="clasificacion" id="plasticos" value="6">
+                                        </label>
+                                        <label class="image-container">
+                                            <img src="/Images/contenedores/Vidrio.webp" alt="Placeholder image 3">
+                                            <input type="checkbox" name="vidrio" class="clasificacion" id="vidrio" value="2">
+                                        </label>
+                                        <label class="image-container">
+                                            <img src="/Images/contenedores/Metal.webp" alt="Placeholder image 4">
+                                            <input type="checkbox" name="metal" class="clasificacion" id="metal" value="4">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="clasificacion" class="form-control" id="selectclass" th:field="*{localizacionDTO.clasificacion_id}">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Añadir</button>
+                            </form>
+
+                        </section>
+                        <section class="col-12 mt-5">
+
+                            <h4 class="header-title">Eliminar Ubicación</h4>
+                            <form th:action="@{/api/v1/delete}" method="post">
+                                <div class="form-group">
+                                    <label class="col-form-label">Select</label>
+                                    <select class="form-control" name="contenedor_id">
+                                        <option th:each="contenedoresDTO : ${containers}"
+                                                th:text="${contenedoresDTO.nombre}"
+                                                th:value="${contenedoresDTO.id}">
+                                        </option>
+                                    </select>
+
+                                </div>
+
+
+                                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Eliminar</button>
+                            </form>
+
+                        </section>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main content area end -->
+
+<!-- footer area start-->
+<footer>
+    <div class="footer-area">
+        <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+    </div>
+</footer>
+<!-- footer area end-->
+</div>
+<!-- page container area end -->
+<!-- offset area start -->
+<div class="offset-area">
+    <div class="offset-close"><i class="ti-close"></i></div>
+
+
+
+</div>
+</div>
+<!-- offset area end -->
+<!-- maps Resources -->
 <script src="/js/Getlocation.js"></script>
+<!-- jquery latest version -->
+<script src="/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<!-- bootstrap 4 js -->
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/owl.carousel.min.js"></script>
+<script src="/assets/js/metisMenu.min.js"></script>
+<script src="/assets/js/jquery.slimscroll.min.js"></script>
+<script src="/assets/js/jquery.slicknav.min.js"></script>
 
+
+<!-- others plugins -->
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/scripts.js"></script>
 </body>
+
 </html>

@@ -16,7 +16,7 @@ CartoDB_Positron.addTo(mapa);
 mapa.zoomControl.setPosition('bottomright');
 
 var customIcon = L.icon({
-    iconUrl: '/Images/marker.png',
+    iconUrl: '/Images/marker.webp',
     iconSize: [34, 34],
     iconAnchor: [18, 34],
     popupAnchor: [0, -32]
@@ -30,7 +30,7 @@ var grupoDificilReciclaje = L.layerGroup();
 var grupoOrganicos = L.layerGroup();
 
 
-const url = 'http://localhost:8099/contenedores/ubicaciones/clasificaciones'; // Cambia la URL según tu configuración
+const url = '/contenedores/ubicaciones/clasificaciones'; // Cambia la URL según tu configuración
 
 fetch(url)
   .then(response => {
@@ -74,12 +74,13 @@ for (var i = 0; i < marcadores.length; i++) {
             }
 
         });
-    punteros[i].bindPopup("<img class='imgbt' src='/Images/Botes/img (22).jpg'  onload='getimg(" + JSON.stringify(residuos) + ")';/> <div class='content'><h3 class='etiqueta_contenedor'>" + marcadores[i][0] + "</h3>  <p class='coordenadas_contenedor'> Con cordenadas :" + marcadores[i][1] + ", " + marcadores[i][2] + "</p><a href='http://localhost:8099/contenedores/ubicaciones/reporte/"+marcadores[i][0]+"'><button class='btn-reportar'>Reportar</button></a></div>");
-
+    punteros[i].bindPopup("<img class='imgbt' src='/Images/Botes/Contenedores.webp'  onload='getimg(" + JSON.stringify(residuos) + ")';/> <div class='content'><h3 class='etiqueta_contenedor'>" + marcadores[i][0] + "</h3>  <p class='coordenadas_contenedor'> Con cordenadas :" + marcadores[i][1] + ", " + marcadores[i][2] + "</p><a href='/contenedores/ubicaciones/reporte/"+marcadores[i][0]+"'><button class='btn-reportar'>Reportar</button></a></div>");
+        
 }
 
 
 
+grupoOrganicos.addTo(mapa);
 grupoPapel.addTo(mapa);
 grupoMetal.addTo(mapa);
 grupoVidrio.addTo(mapa);
@@ -87,6 +88,7 @@ grupoPlasticos.addTo(mapa);
 grupoDificilReciclaje.addTo(mapa);
 
 var overlayMaps = {
+    "Organicos": grupoOrganicos,
     "Papel": grupoPapel,
     "Metal": grupoMetal,
     "Vidrio": grupoVidrio,
@@ -96,7 +98,7 @@ var overlayMaps = {
 
 
 L.control.layers(null, overlayMaps,{ position: 'bottomleft' }).addTo(mapa);
-    //console.log('Clasificaciones obtenidas:', marcadores);
+    console.log('Clasificaciones obtenidas:', marcadores);
 
 
   })
@@ -158,10 +160,13 @@ function getimg(residuos) {
         var divcls = document.createElement('div');
         divcls.className = 'image-container';
         var imgcls = document.createElement('img');
+        
+        imgcls.id = residuos[i];
+        imgcls.src = "/Images/contenedores/" + residuos[i] + ".webp";
 
-        imgcls.src = "/Images/contenedores/" + residuos[i] + ".png";
         divcls.appendChild(imgcls);
         divmain.appendChild(divcls);
     }
+    chargedata();
 }
 

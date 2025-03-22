@@ -31,7 +31,7 @@ public class UbicacionesController {
     }
 
     @GetMapping("/mapa")
-    public String Mapa(){
+    public String Mapa( ){
 
         return "mapa";
     }
