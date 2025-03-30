@@ -1,0 +1,67 @@
+server:
+  port: 8099
+  error:
+    whitelabel:
+      enabled: false
+    include-exception: true
+    include-message: always
+    include-stacktrace: never
+
+spring:
+  application:
+    name: mcsv-reportes
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://mysql-8ebd880-alumnos-859e.l.aivencloud.com:28982/notificaciones}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  thymeleaf:
+    cache: false
+    enabled: true
+    servlet:
+      prefix: /templates/
+      suffix: .html
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: brayandelgadodiaz03@gmail.com
+    password: muspunqeepftmfma
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+feign:
+    client:
+        mcsv-login:
+            url: ${FOREIGN_CLIENT_URL:http://localhost:9090/auth}
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL:http://localhost:8761/eureka}
+
+
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            SQL: TRACE

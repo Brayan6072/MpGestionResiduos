@@ -1,0 +1,61 @@
+    <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/Login.css">
+    <title>Iniciar Sesion</title>
+</head>
+<body>
+<div class="container" id="container">
+    <div class="form-container sign-up">
+        <form id="registerForm" method="post" th:object="${register}" th:action="@{/api/v1/register}">
+
+            <h1>Crear Cuenta</h1>
+
+            <input name="name" th:field="*{name}" type="text" placeholder="Nombre" required>
+            <input name="username" th:field="*{username}" type="email" placeholder="Correo electrónico" required>
+            <input name="lastname" th:field="*{lastname}" type="text" placeholder="Apellido" required>
+            <input name="phone" th:field="*{phone}" type="text" placeholder="Teléfono" required>
+            <input name="password" th:field="*{password}" type="password" placeholder="Contraseña" required>
+
+            <button type="submit" title="Ingresar">Crear</button>
+        </form>
+    </div>
+
+
+
+    <div class="form-container sign-in">
+        <form id="loginForm" method="post" th:object="${request}" th:action="@{/api/v1/login}">
+            <h1>Iniciar Sesion</h1>
+            <input name="username" type="email" th:field="*{username}" placeholder="username" required>
+            <input name="password" type="password" th:field="*{password}" placeholder="password" required>
+            <a href="#">¿Olvidó su contraseña?</a>
+            <button type="submit">Iniciar</button>
+        </form>
+    </div>
+
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h1>Hola de nuevo!</h1>
+                <p>Si ya tiene una cuenta con nosotros, inicie sesión aquí</p>
+                <button class="hidden" id="login">Iniciar Sesion</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1>Hola Amigo!</h1>
+                <p>Regístrese si aún no tiene una cuenta con nosotros</p>
+                <button class="hidden" id="register">Registrate Aqui</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<a class="home-link" href="https://mcsv-reportes-latest.onrender.com/contenedores/ubicaciones/mapa"><img src="/icon/home.png" alt=""></a>
+<script src="/js/scriptlg.js"></script>
+
+
+</body>
+</html>
